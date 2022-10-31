@@ -14,9 +14,13 @@ We will use the following assets:
     <img src=".resources/game_asset.png">
 </p>
 
+___
+
 ## Story
 
-Alors on prend des handicapés et on les met des une cage pour se battre.
+This is an apocalyptic story about France, attacked by monster. French people decide to do witchcraft in order to give to the Emperor Napoleon a rebirth to make him save the country in a new body. He gets some new magical power that are efficient against monsters. He has to kill them all! This new hero will need to protect France and it's people.
+
+___
 
 ## Specifications
 
