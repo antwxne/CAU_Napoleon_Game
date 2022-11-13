@@ -1,8 +1,18 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Script/Camera.gd" type="Script" id=2]
 [ext_resource path="res://Sprite/RPG tileset (full) v1.5.png" type="Texture" id=3]
+
+[sub_resource type="Gradient" id=2]
+interpolation_mode = 2
+offsets = PoolRealArray( 0.175978, 0.360335, 0.47486, 0.701117, 0.902235 )
+colors = PoolColorArray( 0.13607, 0.34375, 0.0998684, 1, 0.0597093, 0.285156, 0.0204112, 1, 0.0296053, 0.9375, 0.0437911, 1, 0.0216201, 0.933594, 0.399234, 1, 0.0397204, 0.898438, 0.878311, 1 )
+
+[sub_resource type="Gradient" id=3]
+interpolation_mode = 2
+offsets = PoolRealArray( 0, 0.315642, 0.681564, 0.97486 )
+colors = PoolColorArray( 0.03206, 0.179688, 0.0109704, 1, 0.0401645, 0.867188, 0.285687, 1, 0.0403454, 0.871094, 0.793211, 1, 0.00391448, 0.669314, 0.929688, 1 )
 
 [sub_resource type="TileSet" id=1]
 0/name = "RPG tileset (full) v1.5.png 0"
@@ -34,6 +44,28 @@ position = Vector2( -3, 2 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 325, 190 )
+
+[node name="ParticuleMove" type="CPUParticles2D" parent="Player"]
+emitting = false
+amount = 50
+gravity = Vector2( 0, 0 )
+initial_velocity = 15.0
+initial_velocity_random = 1.0
+angular_velocity = 1.0
+angular_velocity_random = 0.5
+linear_accel = 25.69
+linear_accel_random = 1.0
+radial_accel = 50.0
+radial_accel_random = 1.0
+damping = 30.0
+damping_random = 1.0
+scale_amount = 5.0
+scale_amount_random = 1.0
+color = Color( 0.364706, 0.92549, 0.0509804, 1 )
+color_ramp = SubResource( 2 )
+color_initial_ramp = SubResource( 3 )
+hue_variation = -0.72
+hue_variation_random = 1.0
 
 [node name="Camera" type="Camera2D" parent="."]
 position = Vector2( 512, 297 )
