@@ -14,6 +14,10 @@ config/name="Napoleon"
 run/main_scene="res://Menu.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+GlobalSettings="*res://Script/globalSettings.gd"
+
 [input]
 
 Right={

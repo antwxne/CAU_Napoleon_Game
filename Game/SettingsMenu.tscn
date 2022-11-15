@@ -1,0 +1,309 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Script/SettingsMenu.gd" type="Script" id=1]
+[ext_resource path="res://fpsDisplay.tscn" type="PackedScene" id=2]
+
+[node name="SettingsMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -3.0
+margin_top = 3.0
+margin_right = -3.0
+margin_bottom = 3.0
+color = Color( 0.172549, 0.0352941, 0.0352941, 1 )
+
+[node name="TabContainer" type="TabContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -373.5
+margin_top = -213.5
+margin_right = 373.5
+margin_bottom = 213.5
+focus_mode = 2
+
+[node name="Video" type="Tabs" parent="TabContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+focus_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="TabContainer/Video"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -136.0
+margin_top = -181.0
+margin_right = 136.0
+margin_bottom = 181.0
+custom_constants/vseparation = 39
+columns = 2
+
+[node name="VideoModeLabel" type="Label" parent="TabContainer/Video/GridContainer"]
+margin_top = 3.0
+margin_right = 112.0
+margin_bottom = 17.0
+text = "Video Mode"
+
+[node name="VideoMode" type="OptionButton" parent="TabContainer/Video/GridContainer"]
+margin_left = 126.0
+margin_right = 276.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 150, 20 )
+focus_neighbour_top = NodePath("../Return")
+size_flags_horizontal = 10
+text = "Windowed"
+items = [ "Windowed", null, false, 0, null, "Fullscreen", null, false, 1, null ]
+selected = 0
+
+[node name="Label" type="Label" parent="TabContainer/Video/GridContainer"]
+margin_top = 72.0
+margin_right = 112.0
+margin_bottom = 86.0
+text = "Vsync"
+
+[node name="CheckVsync" type="CheckButton" parent="TabContainer/Video/GridContainer"]
+margin_left = 200.0
+margin_top = 59.0
+margin_right = 276.0
+margin_bottom = 99.0
+size_flags_horizontal = 10
+
+[node name="Label2" type="Label" parent="TabContainer/Video/GridContainer"]
+margin_top = 151.0
+margin_right = 112.0
+margin_bottom = 165.0
+text = "Display Fps"
+
+[node name="CheckFps" type="CheckButton" parent="TabContainer/Video/GridContainer"]
+margin_left = 200.0
+margin_top = 138.0
+margin_right = 276.0
+margin_bottom = 178.0
+size_flags_horizontal = 10
+
+[node name="Label3" type="Label" parent="TabContainer/Video/GridContainer"]
+margin_top = 218.0
+margin_right = 112.0
+margin_bottom = 232.0
+text = "Max Fps"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Video/GridContainer"]
+margin_left = 116.0
+margin_top = 217.0
+margin_right = 276.0
+margin_bottom = 233.0
+
+[node name="Label" type="Label" parent="TabContainer/Video/GridContainer/HBoxContainer"]
+margin_top = 1.0
+margin_right = 26.0
+margin_bottom = 15.0
+size_flags_horizontal = 10
+text = "Max"
+
+[node name="SliderFps" type="HSlider" parent="TabContainer/Video/GridContainer/HBoxContainer"]
+margin_left = 30.0
+margin_right = 160.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 130, 0 )
+size_flags_horizontal = 9
+min_value = 30.0
+max_value = 400.0
+value = 60.0
+
+[node name="Label4" type="Label" parent="TabContainer/Video/GridContainer"]
+margin_top = 273.0
+margin_right = 68.0
+margin_bottom = 287.0
+size_flags_horizontal = 0
+text = "Brightness"
+
+[node name="SliderB" type="HSlider" parent="TabContainer/Video/GridContainer"]
+margin_left = 116.0
+margin_top = 272.0
+margin_right = 276.0
+margin_bottom = 288.0
+rect_min_size = Vector2( 130, 0 )
+size_flags_horizontal = 9
+max_value = 2.0
+step = 0.1
+value = 1.0
+
+[node name="Return" type="Button" parent="TabContainer/Video/GridContainer"]
+margin_top = 327.0
+margin_right = 112.0
+margin_bottom = 347.0
+focus_neighbour_bottom = NodePath("../VideoMode")
+text = "Return to menu"
+
+[node name="Audio" type="Tabs" parent="TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+focus_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="TabContainer/Audio"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -136.0
+margin_top = -181.0
+margin_right = 136.0
+margin_bottom = 181.0
+custom_constants/vseparation = 39
+columns = 2
+
+[node name="Label4" type="Label" parent="TabContainer/Audio/GridContainer"]
+margin_top = 1.0
+margin_right = 97.0
+margin_bottom = 15.0
+size_flags_horizontal = 0
+text = "Master Volume"
+
+[node name="SliderMaster" type="HSlider" parent="TabContainer/Audio/GridContainer"]
+margin_left = 116.0
+margin_right = 246.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 130, 0 )
+size_flags_horizontal = 9
+min_value = -50.0
+max_value = 0.0
+value = -10.0
+
+[node name="Label5" type="Label" parent="TabContainer/Audio/GridContainer"]
+margin_top = 56.0
+margin_right = 91.0
+margin_bottom = 70.0
+size_flags_horizontal = 0
+text = "Music Volume"
+
+[node name="SliderMusic" type="HSlider" parent="TabContainer/Audio/GridContainer"]
+margin_left = 116.0
+margin_top = 55.0
+margin_right = 246.0
+margin_bottom = 71.0
+rect_min_size = Vector2( 130, 0 )
+size_flags_horizontal = 9
+min_value = -50.0
+max_value = 0.0
+value = -10.0
+
+[node name="Label6" type="Label" parent="TabContainer/Audio/GridContainer"]
+margin_top = 111.0
+margin_right = 75.0
+margin_bottom = 125.0
+size_flags_horizontal = 0
+text = "SFX Volume"
+
+[node name="SliderSFX" type="HSlider" parent="TabContainer/Audio/GridContainer"]
+margin_left = 116.0
+margin_top = 110.0
+margin_right = 246.0
+margin_bottom = 126.0
+rect_min_size = Vector2( 130, 0 )
+size_flags_horizontal = 9
+min_value = -50.0
+max_value = 0.0
+value = -10.0
+
+[node name="Return" type="Button" parent="TabContainer/Audio/GridContainer"]
+margin_top = 165.0
+margin_right = 112.0
+margin_bottom = 185.0
+text = "Return to menu"
+
+[node name="Gameplay" type="Tabs" parent="TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+focus_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="TabContainer/Gameplay"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -136.0
+margin_top = -181.0
+margin_right = 136.0
+margin_bottom = 181.0
+custom_constants/vseparation = 39
+columns = 2
+
+[node name="Label4" type="Label" parent="TabContainer/Gameplay/GridContainer"]
+margin_top = 1.0
+margin_right = 86.0
+margin_bottom = 15.0
+size_flags_horizontal = 0
+text = "Mouse Speed"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Gameplay/GridContainer"]
+margin_left = 116.0
+margin_right = 258.0
+margin_bottom = 16.0
+
+[node name="SliderSpeed" type="HSlider" parent="TabContainer/Gameplay/GridContainer/HBoxContainer"]
+margin_right = 130.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 130, 0 )
+size_flags_horizontal = 9
+min_value = 0.05
+max_value = 3.0
+step = 0.01
+value = 1.0
+
+[node name="Label" type="Label" parent="TabContainer/Gameplay/GridContainer/HBoxContainer"]
+margin_left = 134.0
+margin_top = 1.0
+margin_right = 142.0
+margin_bottom = 15.0
+text = "1"
+
+[node name="Return" type="Button" parent="TabContainer/Gameplay/GridContainer"]
+margin_top = 55.0
+margin_right = 112.0
+margin_bottom = 75.0
+text = "Return to menu"
+
+[node name="Control" parent="." instance=ExtResource( 2 )]
+
+[connection signal="item_selected" from="TabContainer/Video/GridContainer/VideoMode" to="." method="_on_VideoMode2_item_selected"]
+[connection signal="item_selected" from="TabContainer/Video/GridContainer/VideoMode" to="." method="_on_OptionButton_item_selected"]
+[connection signal="toggled" from="TabContainer/Video/GridContainer/CheckVsync" to="." method="_on_CheckVsync_toggled"]
+[connection signal="toggled" from="TabContainer/Video/GridContainer/CheckVsync" to="." method="_on_CheckButton_toggled"]
+[connection signal="toggled" from="TabContainer/Video/GridContainer/CheckFps" to="." method="_on_CheckFps_toggled"]
+[connection signal="toggled" from="TabContainer/Video/GridContainer/CheckFps" to="." method="_on_CheckButton2_toggled"]
+[connection signal="drag_ended" from="TabContainer/Video/GridContainer/HBoxContainer/SliderFps" to="." method="_on_SliderFps_drag_ended"]
+[connection signal="drag_ended" from="TabContainer/Video/GridContainer/HBoxContainer/SliderFps" to="." method="_on_HSlider_drag_ended"]
+[connection signal="drag_ended" from="TabContainer/Video/GridContainer/SliderB" to="." method="_on_SliderB_drag_ended"]
+[connection signal="drag_ended" from="TabContainer/Video/GridContainer/SliderB" to="." method="_on_HSlider_drag_ended"]
+[connection signal="pressed" from="TabContainer/Video/GridContainer/Return" to="." method="_on_Return_pressed"]
+[connection signal="drag_ended" from="TabContainer/Audio/GridContainer/SliderMaster" to="." method="_on_SliderMaster_drag_ended"]
+[connection signal="drag_ended" from="TabContainer/Audio/GridContainer/SliderMaster" to="." method="_on_HSlider_drag_ended"]
+[connection signal="drag_ended" from="TabContainer/Audio/GridContainer/SliderMusic" to="." method="_on_SliderMusic_drag_ended"]
+[connection signal="drag_ended" from="TabContainer/Audio/GridContainer/SliderMusic" to="." method="_on_HSlider2_drag_ended"]
+[connection signal="drag_ended" from="TabContainer/Audio/GridContainer/SliderSFX" to="." method="_on_SliderSFX_drag_ended"]
+[connection signal="drag_ended" from="TabContainer/Audio/GridContainer/SliderSFX" to="." method="_on_HSlider3_drag_ended"]
+[connection signal="pressed" from="TabContainer/Audio/GridContainer/Return" to="." method="_on_Return_pressed"]
+[connection signal="drag_ended" from="TabContainer/Gameplay/GridContainer/HBoxContainer/SliderSpeed" to="." method="_on_SliderSpeed_drag_ended"]
+[connection signal="drag_ended" from="TabContainer/Gameplay/GridContainer/HBoxContainer/SliderSpeed" to="." method="_on_HSlider_drag_ended"]
+[connection signal="pressed" from="TabContainer/Gameplay/GridContainer/Return" to="." method="_on_Return_pressed"]

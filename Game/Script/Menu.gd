@@ -13,7 +13,7 @@ func _on_Player_Stats_pressed():
 
 
 func _on_Settings_pressed():
-	pass # Replace with function body.
+	get_tree().change_scene("res://SettingsMenu.tscn");
 
 
 func _on_Exit_pressed():
