@@ -7,3 +7,4 @@ func _process(delta):
 	var x = floor(position.x)
 	var y = floor(position.y)
 	global_position = Vector2(x, y)
+

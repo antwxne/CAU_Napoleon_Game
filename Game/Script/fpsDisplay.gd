@@ -2,6 +2,7 @@ extends Label
 
 func _ready():
 	GlobalSettings.connect("fps", self, "_on_fps");
+	visible = Save.gameData.display_fps;
 
 func _process(delta):
 	text = "FPS: %s" % [Engine.get_frames_per_second()]

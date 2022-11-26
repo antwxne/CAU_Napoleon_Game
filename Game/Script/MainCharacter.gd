@@ -6,6 +6,11 @@ onready var _animated_sprite = $AnimatedSprite
 
 export var velocity = Vector2()
 
+export var mouse_sensitivity = .1;
+
+func _ready():
+	GlobalSettings.connect("mouse_sens", self, "_on_mouse_sens");
+
 func get_input():
 	velocity = Vector2()
 
@@ -59,3 +64,6 @@ func get_input():
 func _physics_process(delta):
 	get_input()
 	velocity = move_and_slide(velocity)
+
+func _on_mouse_sens(value):
+	mouse_sensitivity = value;
