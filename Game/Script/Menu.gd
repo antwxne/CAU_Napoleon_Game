@@ -1,6 +1,5 @@
 extends Node
 
-
 func _ready():
 	Save.load_data();
 	$VBoxContainer/Play.grab_focus();
@@ -10,6 +9,7 @@ func _ready():
 	GlobalSettings.updateVol(0, Save.gameData.master_vol);
 	GlobalSettings.updateVol(1, Save.gameData.music_vol);
 	GlobalSettings.updateVol(2, Save.gameData.vfx_vol);
+	GlobalSettings.updateShortcut();
 
 func _on_Play_pressed():
 	get_tree().change_scene("res://Main.tscn");

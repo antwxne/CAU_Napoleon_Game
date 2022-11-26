@@ -250,12 +250,13 @@ margin_top = 3.0
 margin_right = 18.0
 margin_bottom = 17.0
 size_flags_horizontal = 10
-text = "w  "
+text = "W  "
 
 [node name="ButtonUp" type="Button" parent="TabContainer/Gameplay/GridContainer/Up"]
 margin_left = 22.0
 margin_right = 80.0
 margin_bottom = 20.0
+focus_neighbour_top = NodePath("../../Return")
 text = "Update"
 
 [node name="Label5" type="Label" parent="TabContainer/Gameplay/GridContainer"]
@@ -277,7 +278,7 @@ margin_top = 3.0
 margin_right = 18.0
 margin_bottom = 17.0
 size_flags_horizontal = 10
-text = "s  "
+text = "S  "
 
 [node name="ButtonDown" type="Button" parent="TabContainer/Gameplay/GridContainer/Down"]
 margin_left = 22.0
@@ -306,9 +307,9 @@ margin_top = 3.0
 margin_right = 18.0
 margin_bottom = 17.0
 size_flags_horizontal = 10
-text = "d  "
+text = "D  "
 
-[node name="ButtonLeft" type="Button" parent="TabContainer/Gameplay/GridContainer/Right"]
+[node name="ButtonRight" type="Button" parent="TabContainer/Gameplay/GridContainer/Right"]
 margin_left = 22.0
 margin_right = 80.0
 margin_bottom = 20.0
@@ -333,9 +334,9 @@ margin_top = 3.0
 margin_right = 18.0
 margin_bottom = 17.0
 size_flags_horizontal = 10
-text = "a  "
+text = "A  "
 
-[node name="ButtonRight" type="Button" parent="TabContainer/Gameplay/GridContainer/Left"]
+[node name="ButtonLeft" type="Button" parent="TabContainer/Gameplay/GridContainer/Left"]
 margin_left = 22.0
 margin_right = 80.0
 margin_bottom = 20.0
@@ -345,9 +346,29 @@ text = "Update"
 margin_top = 236.0
 margin_right = 112.0
 margin_bottom = 256.0
+focus_neighbour_bottom = NodePath("../Up/ButtonUp")
 text = "Return to menu"
 
+[node name="press_a_key_label" type="Label" parent="."]
+visible = false
+anchor_left = 0.789
+anchor_top = 0.5
+anchor_right = 0.83
+anchor_bottom = 0.5
+margin_left = -72.0
+margin_top = -7.0
+margin_bottom = 7.0
+text = "Press a key"
+
 [node name="Control" parent="." instance=ExtResource( 2 )]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -512.0
+margin_top = -300.0
+margin_right = 512.0
+margin_bottom = 300.0
 
 [connection signal="item_focused" from="TabContainer/Video/GridContainer/VideoMode" to="." method="_on_VideoMode_item_focused"]
 [connection signal="item_selected" from="TabContainer/Video/GridContainer/VideoMode" to="." method="_on_OptionButton_item_selected"]
@@ -376,6 +397,6 @@ text = "Return to menu"
 [connection signal="pressed" from="TabContainer/Gameplay/GridContainer/Up/ButtonUp" to="." method="_on_ButtonUp_pressed"]
 [connection signal="pressed" from="TabContainer/Gameplay/GridContainer/Down/ButtonDown" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="TabContainer/Gameplay/GridContainer/Down/ButtonDown" to="." method="_on_ButtonDown_pressed"]
-[connection signal="pressed" from="TabContainer/Gameplay/GridContainer/Right/ButtonLeft" to="." method="_on_ButtonLeft_pressed"]
-[connection signal="pressed" from="TabContainer/Gameplay/GridContainer/Left/ButtonRight" to="." method="_on_ButtonRight_pressed"]
+[connection signal="pressed" from="TabContainer/Gameplay/GridContainer/Right/ButtonRight" to="." method="_on_ButtonRight_pressed"]
+[connection signal="pressed" from="TabContainer/Gameplay/GridContainer/Left/ButtonLeft" to="." method="_on_ButtonLeft_pressed"]
 [connection signal="pressed" from="TabContainer/Gameplay/GridContainer/Return" to="." method="_on_Return_pressed"]

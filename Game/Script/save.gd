@@ -19,10 +19,10 @@ func load_data():
 			"music_vol": -10,
 			"vfx_vol": -10,
 			"input": {
-				"up": "w",
-				"down": "s",
-				"right": "d",
-				"left": "a",
+				"Up": "W",
+				"Down": "S",
+				"Right": "D",
+				"Left": "A",
 			},
 			"player": {
 				"gold": 10,

@@ -22,7 +22,6 @@ func _update():
 	$GridContainer2/OffenseZone.text = "Offense zone level: " +  str(oz);
 	$GridContainer2/Gold.text = "You got " + str(gold) +" gold";
 
-
 func _on_UpgradeAttack_pressed():
 	if gold >= 10:
 		attack += 1;
