@@ -10,6 +10,7 @@ func _ready():
 	GlobalSettings.updateVol(1, Save.gameData.music_vol);
 	GlobalSettings.updateVol(2, Save.gameData.vfx_vol);
 	GlobalSettings.updateShortcut();
+	$Label.text = "Gold: " + str(Save.gameData.player.gold);
 
 func _on_Play_pressed():
 	get_tree().change_scene("res://Main.tscn");

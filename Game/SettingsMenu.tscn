@@ -11,10 +11,6 @@ script = ExtResource( 1 )
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -3.0
-margin_top = 3.0
-margin_right = -3.0
-margin_bottom = 3.0
 color = Color( 0.172549, 0.0352941, 0.0352941, 1 )
 
 [node name="TabContainer" type="TabContainer" parent="."]
@@ -361,26 +357,18 @@ margin_bottom = 7.0
 text = "Press a key"
 
 [node name="Control" parent="." instance=ExtResource( 2 )]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -512.0
-margin_top = -300.0
-margin_right = 512.0
-margin_bottom = 300.0
 
 [connection signal="item_focused" from="TabContainer/Video/GridContainer/VideoMode" to="." method="_on_VideoMode_item_focused"]
-[connection signal="item_selected" from="TabContainer/Video/GridContainer/VideoMode" to="." method="_on_OptionButton_item_selected"]
-[connection signal="item_selected" from="TabContainer/Video/GridContainer/VideoMode" to="." method="_on_VideoMode2_item_selected"]
 [connection signal="item_selected" from="TabContainer/Video/GridContainer/VideoMode" to="." method="_on_VideoMode_item_selected"]
+[connection signal="item_selected" from="TabContainer/Video/GridContainer/VideoMode" to="." method="_on_VideoMode2_item_selected"]
+[connection signal="item_selected" from="TabContainer/Video/GridContainer/VideoMode" to="." method="_on_OptionButton_item_selected"]
 [connection signal="button_up" from="TabContainer/Video/GridContainer/CheckVsync" to="." method="_on_CheckVsync_button_up"]
-[connection signal="toggled" from="TabContainer/Video/GridContainer/CheckVsync" to="." method="_on_CheckButton_toggled"]
 [connection signal="toggled" from="TabContainer/Video/GridContainer/CheckVsync" to="." method="_on_CheckVsync_toggled"]
-[connection signal="toggled" from="TabContainer/Video/GridContainer/CheckFps" to="." method="_on_CheckButton2_toggled"]
+[connection signal="toggled" from="TabContainer/Video/GridContainer/CheckVsync" to="." method="_on_CheckButton_toggled"]
 [connection signal="toggled" from="TabContainer/Video/GridContainer/CheckFps" to="." method="_on_CheckFps_toggled"]
-[connection signal="drag_ended" from="TabContainer/Video/GridContainer/HBoxContainer/SliderFps" to="." method="_on_HSlider_drag_ended"]
+[connection signal="toggled" from="TabContainer/Video/GridContainer/CheckFps" to="." method="_on_CheckButton2_toggled"]
 [connection signal="drag_ended" from="TabContainer/Video/GridContainer/HBoxContainer/SliderFps" to="." method="_on_SliderFps_drag_ended"]
+[connection signal="drag_ended" from="TabContainer/Video/GridContainer/HBoxContainer/SliderFps" to="." method="_on_HSlider_drag_ended"]
 [connection signal="value_changed" from="TabContainer/Video/GridContainer/HBoxContainer/SliderFps" to="." method="_on_SliderFps_value_changed"]
 [connection signal="pressed" from="TabContainer/Video/GridContainer/Return" to="." method="_on_Return_pressed"]
 [connection signal="drag_ended" from="TabContainer/Audio/GridContainer/SliderMaster" to="." method="_on_HSlider_drag_ended"]
@@ -389,8 +377,8 @@ margin_bottom = 300.0
 [connection signal="drag_ended" from="TabContainer/Audio/GridContainer/SliderMusic" to="." method="_on_SliderMusic_drag_ended"]
 [connection signal="drag_ended" from="TabContainer/Audio/GridContainer/SliderMusic" to="." method="_on_HSlider2_drag_ended"]
 [connection signal="value_changed" from="TabContainer/Audio/GridContainer/SliderMusic" to="." method="_on_SliderMusic_value_changed"]
-[connection signal="drag_ended" from="TabContainer/Audio/GridContainer/SliderVFX" to="." method="_on_SliderSFX_drag_ended"]
 [connection signal="drag_ended" from="TabContainer/Audio/GridContainer/SliderVFX" to="." method="_on_HSlider3_drag_ended"]
+[connection signal="drag_ended" from="TabContainer/Audio/GridContainer/SliderVFX" to="." method="_on_SliderSFX_drag_ended"]
 [connection signal="value_changed" from="TabContainer/Audio/GridContainer/SliderVFX" to="." method="_on_SliderSFX_value_changed"]
 [connection signal="pressed" from="TabContainer/Audio/GridContainer/Return" to="." method="_on_Return_pressed"]
 [connection signal="pressed" from="TabContainer/Gameplay/GridContainer/Up/ButtonUp" to="." method="_on_Button_pressed"]
