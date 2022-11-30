@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/spear_throw-Mike_Koenig-2064202968.mp3-0f8fb05c7a7875dac0729cdc41094e2c.mp3str"
+
+[deps]
+
+source_file="res://sounds/spear_throw-Mike_Koenig-2064202968.mp3"
+dest_files=[ "res://.import/spear_throw-Mike_Koenig-2064202968.mp3-0f8fb05c7a7875dac0729cdc41094e2c.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

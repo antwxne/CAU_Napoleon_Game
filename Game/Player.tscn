@@ -146,5 +146,4 @@ shape = SubResource( 27 )
 position = Vector2( 1, -10 )
 frames = SubResource( 28 )
 animation = "down_direction"
-frame = 3
 playing = true

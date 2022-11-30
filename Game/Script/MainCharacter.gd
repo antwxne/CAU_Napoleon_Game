@@ -8,8 +8,27 @@ export var velocity = Vector2()
 
 export var mouse_sensitivity = .1;
 
+var spear = preload("res://Spear.tscn");
+
+onready var spearTimer = get_node("%SpearTimer");
+onready var spearAttackTimer = get_node("%SpearAttackTimer");
+
+var spearAmmo = 0;
+var spearBaseAmmo = 1;
+var spearSpeed = 0;
+var spearLevel = 1;
+
+var enemyClose = [];
+
 func _ready():
 	GlobalSettings.connect("mouse_sens", self, "_on_mouse_sens");
+	attack();
+
+func attack():
+	if spearLevel > 0:
+		spearTimer.wait_time = spearSpeed;
+		if spearTimer.is_stopped():
+			spearTimer.start();
 
 func get_input():
 	velocity = Vector2()
@@ -67,3 +86,32 @@ func _physics_process(delta):
 
 func _on_mouse_sens(value):
 	mouse_sensitivity = value;
+
+
+func _on_SpearAttackTimer_timeout():
+	if spear > 0:
+		var spearAttack = spear.instance();
+		spearAttack.position = position;
+		spearAttack.traget = getRandomTarget();
+		spearAttack.level = spearLevel;
+		add_child(spearAttack);
+		spearAmmo -= 1;
+		if spearAmmo > 0:
+			spearAttackTimer.start();
+		else:
+			spearAttackTimer.stop();
+
+func getRandomTarget():
+	pass
+
+func _on_SpearTimer_timeout():
+	spearAmmo += spearBaseAmmo;
+	spearAttackTimer.start();
+
+
+func _on_Area2D_body_entered(body):
+	pass # Replace with function body.
+
+
+func _on_Area2D_body_exited(body):
+	pass # Replace with function body.
