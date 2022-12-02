@@ -18,6 +18,9 @@ var spearBaseAmmo = 1;
 var spearSpeed = 0;
 var spearLevel = 1;
 
+var armor = 0;
+var health = 100;
+
 var enemyClose = [];
 
 func _ready():
@@ -115,3 +118,12 @@ func _on_Area2D_body_entered(body):
 
 func _on_Area2D_body_exited(body):
 	pass # Replace with function body.
+
+
+func _on_hurtbox_hurt(damage, angle, knockback):
+	health -= clamp(damage - armor, 1.0, 999.0);
+	print(health);
+	#if hp <= 0:
+	#	death()
+	#healthBar.max_value = maxhp
+	#healthBar.value = hp
