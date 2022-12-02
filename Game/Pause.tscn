@@ -85,8 +85,8 @@ text = "Exit"
 
 [connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_Play_pressed"]
 [connection signal="pressed" from="VBoxContainer/Settings" to="." method="_on_Settings_pressed"]
-[connection signal="pressed" from="VBoxContainer/MainMenu" to="." method="_on_Exit_pressed"]
 [connection signal="pressed" from="VBoxContainer/MainMenu" to="." method="_on_MainMenu_pressed"]
-[connection signal="pressed" from="VBoxContainer/Left" to="." method="_on_Player_Stats_pressed"]
-[connection signal="pressed" from="VBoxContainer/Left" to="." method="_on_Exit_pressed"]
+[connection signal="pressed" from="VBoxContainer/MainMenu" to="." method="_on_Exit_pressed"]
 [connection signal="pressed" from="VBoxContainer/Left" to="." method="_on_Left_pressed"]
+[connection signal="pressed" from="VBoxContainer/Left" to="." method="_on_Exit_pressed"]
+[connection signal="pressed" from="VBoxContainer/Left" to="." method="_on_Player_Stats_pressed"]

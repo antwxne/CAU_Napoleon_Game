@@ -24,3 +24,5 @@ shape = SubResource( 1 )
 [node name="Timer" type="Timer" parent="Spear"]
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Spear"]
+
+[connection signal="timeout" from="Spear/Timer" to="Spear" method="_on_Timer_timeout"]
