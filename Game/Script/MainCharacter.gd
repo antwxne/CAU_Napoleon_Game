@@ -25,13 +25,13 @@ var enemyClose = [];
 
 func _ready():
 	GlobalSettings.connect("mouse_sens", self, "_on_mouse_sens");
-#	attack();
+	attack();
 
-#func attack():
-#	if spearLevel > 0:
-#		spearTimer.wait_time = spearSpeed;
-#		if spearTimer.is_stopped():
-#			spearTimer.start();
+func attack():
+	if spearLevel > 0:
+		spearTimer.wait_time = spearSpeed;
+		if spearTimer.is_stopped():
+			spearTimer.start();
 
 func get_input():
 	velocity = Vector2()

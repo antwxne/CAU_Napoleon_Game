@@ -150,7 +150,7 @@ shape = SubResource( 27 )
 position = Vector2( 1, -10 )
 frames = SubResource( 28 )
 animation = "down_direction"
-frame = 1
+frame = 3
 playing = true
 
 [node name="hurtbox" parent="." instance=ExtResource( 4 )]
@@ -160,6 +160,14 @@ collision_mask = 2
 [node name="CollisionShape2D" parent="hurtbox" index="0"]
 position = Vector2( 0, -10 )
 shape = SubResource( 29 )
+
+[node name="attack" type="Node2D" parent="."]
+
+[node name="Timer" type="Timer" parent="attack"]
+unique_name_in_owner = true
+
+[node name="SpearAttackTimer" type="Timer" parent="attack/Timer"]
+unique_name_in_owner = true
 
 [connection signal="hurt" from="hurtbox" to="." method="_on_hurtbox_hurt"]
 
