@@ -19,7 +19,7 @@ var spearSpeed = 0;
 var spearLevel = 1;
 
 var armor = 0;
-var health = 100;
+var health = 15;
 
 var enemyClose = [];
 
@@ -90,7 +90,6 @@ func _physics_process(delta):
 func _on_mouse_sens(value):
 	mouse_sensitivity = value;
 
-
 func _on_SpearAttackTimer_timeout():
 	if spear > 0:
 		var spearAttack = spear.instance();
@@ -123,7 +122,10 @@ func _on_Area2D_body_exited(body):
 func _on_hurtbox_hurt(damage, angle, knockback):
 	health -= clamp(damage - armor, 1.0, 999.0);
 	print(health);
-	#if hp <= 0:
-	#	death()
+	if health <= 0:
+		death()
 	#healthBar.max_value = maxhp
 	#healthBar.value = hp
+
+func death():
+	get_tree().change_scene("res://Loose.tscn");
