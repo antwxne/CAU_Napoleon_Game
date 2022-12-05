@@ -50,6 +50,9 @@ script = ExtResource( 5 )
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 325, 190 )
 
+[node name="AnimatedSprite" parent="Player" index="1"]
+frame = 2
+
 [node name="ParticuleMove" type="CPUParticles2D" parent="Player"]
 emitting = false
 amount = 50
@@ -83,14 +86,6 @@ margin_top = -297.0
 margin_right = -512.0
 margin_bottom = -297.0
 
-[node name="xp" parent="Camera/hud/CanvasLayer/VBoxContainer" index="0"]
-anchor_left = 0.0
-anchor_right = 0.0
-
-[node name="health" parent="Camera/hud/CanvasLayer/VBoxContainer" index="1"]
-anchor_left = 0.0
-anchor_right = 0.0
-
 [node name="fps" parent="Camera" instance=ExtResource( 4 )]
 margin_left = -512.0
 margin_top = -297.0
@@ -112,5 +107,9 @@ tile_data = PoolIntArray( 721071, 0, 65537, 721085, 0, 0, 721086, 0, 1, 721087, 
 [node name="Slime" parent="." instance=ExtResource( 6 )]
 position = Vector2( 486, 190 )
 
+[connection signal="hurt" from="Player/hurtbox" to="Camera/hud" method="_on_hurtbox_hurt"]
+
+[editable path="Player"]
+[editable path="Player/hurtbox"]
 [editable path="Camera/hud"]
 [editable path="Camera/fps"]
