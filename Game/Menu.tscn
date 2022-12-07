@@ -118,3 +118,4 @@ selected = 0
 [connection signal="pressed" from="VBoxContainer/Player Stats" to="." method="_on_Player_Stats_pressed"]
 [connection signal="pressed" from="VBoxContainer/Settings" to="." method="_on_Settings_pressed"]
 [connection signal="pressed" from="VBoxContainer/Exit" to="." method="_on_Exit_pressed"]
+[connection signal="item_focused" from="Time" to="." method="_on_Time_item_focused"]

@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Font/Roboto-Black.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Script/Victory.gd" type="Script" id=2]
 
 [sub_resource type="DynamicFont" id=1]
 size = 50
@@ -13,6 +14,7 @@ margin_left = -3.0
 margin_top = -92.0
 margin_right = -3.0
 margin_bottom = -92.0
+script = ExtResource( 2 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_left = 0.5
@@ -46,6 +48,7 @@ margin_left = -100.0
 margin_top = 30.0
 margin_right = 100.0
 margin_bottom = 70.0
+focus_neighbour_top = NodePath("../Button2")
 text = "Replay"
 
 [node name="Button2" type="Button" parent="."]
@@ -57,4 +60,8 @@ margin_left = -100.0
 margin_top = 100.0
 margin_right = 100.0
 margin_bottom = 140.0
+focus_neighbour_bottom = NodePath("../Button")
 text = "Main menu"
+
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_Button2_pressed"]

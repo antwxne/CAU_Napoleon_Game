@@ -2,15 +2,13 @@ extends Control
 
 var gold = Save.gameData.player.gold;
 var time = 0;
-var health = 100 + (Save.gameData.player.health * 10);
-var baseHealth = 100 + Save.gameData.player.health * 10;
+var health = 50 + Save.gameData.player.health * 10;
+var baseHealth = 50 + Save.gameData.player.health * 10;
 
 func _ready():
 	update();
 	
 func update():
-	print(Save.gameData.player.health);
-	print(health);
 	$CanvasLayer/VBoxContainer/Label2.text = "Gold: " + str(gold);
 
 func _process(delta):

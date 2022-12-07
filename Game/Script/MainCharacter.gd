@@ -19,7 +19,7 @@ var spearSpeed = 0;
 var spearLevel = 1;
 
 var armor = 0;
-var health = 100 + Save.gameData.player.health * 10;
+var health = 50 + Save.gameData.player.health * 10;
 
 var enemyClose = [];
 

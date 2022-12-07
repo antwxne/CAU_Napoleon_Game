@@ -23,3 +23,12 @@ func _on_Settings_pressed():
 
 func _on_Exit_pressed():
 	get_tree().quit();
+
+func _on_Time_item_focused(index):
+	if index == 0:
+		Save.gameData.time = 5;
+	if index == 1:
+		Save.gameData.time = 15;
+	if index == 2:
+		Save.gameData.time = 30;
+	Save.save_data();
