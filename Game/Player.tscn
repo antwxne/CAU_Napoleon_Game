@@ -1,12 +1,23 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://Sprite/DeathKnight_idle.png" type="Texture" id=1]
 [ext_resource path="res://Sprite/DeathKnight_walk.png" type="Texture" id=2]
 [ext_resource path="res://Script/MainCharacter.gd" type="Script" id=3]
 [ext_resource path="res://hurtbox.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Sprite/DeathKnight_hit.png" type="Texture" id=5]
 
 [sub_resource type="CapsuleShape2D" id=27]
 radius = 25.0
+
+[sub_resource type="AtlasTexture" id=30]
+flags = 4
+atlas = ExtResource( 5 )
+region = Rect2( 0, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=31]
+flags = 4
+atlas = ExtResource( 5 )
+region = Rect2( 64, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=15]
 flags = 4
@@ -110,6 +121,11 @@ region = Rect2( 192, 192, 64, 64 )
 
 [sub_resource type="SpriteFrames" id=28]
 animations = [ {
+"frames": [ SubResource( 30 ), SubResource( 31 ) ],
+"loop": true,
+"name": "damage",
+"speed": 5.0
+}, {
 "frames": [ SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ) ],
 "loop": true,
 "name": "down_direction",
@@ -149,7 +165,7 @@ shape = SubResource( 27 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 1, -10 )
 frames = SubResource( 28 )
-animation = "down_direction"
+animation = "idle"
 frame = 3
 playing = true
 
