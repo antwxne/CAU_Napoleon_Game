@@ -6,23 +6,20 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 20, 5 )
 
-[node name="Spear" type="Node2D"]
-
-[node name="Spear" type="Area2D" parent="." groups=["Attack"]]
-collision_layer = 4
-collision_mask = 0
+[node name="Spear" type="Area2D" groups=["attack"]]
+light_mask = 4
 script = ExtResource( 2 )
 
-[node name="Spear" type="Sprite" parent="Spear"]
+[node name="Spear" type="Sprite" parent="."]
 position = Vector2( 20, 5 )
 texture = ExtResource( 1 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Spear"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 21, 5 )
 shape = SubResource( 1 )
 
-[node name="Timer" type="Timer" parent="Spear"]
+[node name="Timer" type="Timer" parent="."]
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Spear"]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 
-[connection signal="timeout" from="Spear/Timer" to="Spear" method="_on_Timer_timeout"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

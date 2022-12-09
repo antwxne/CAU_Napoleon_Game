@@ -6,14 +6,14 @@ var speed = 100;
 var damage = 5;
 var knockback_amount = 100;
 var attack_size = 1.0;
+var oz = Save.gameData.player.offense_zone;
 
 var target = Vector2.ZERO;
 var angle = Vector2.ZERO;
 
-onready var player = get_tree().get_node("res://Player.tscn");
+onready var player = get_node("res://Player.tscn");
 
 signal remove_from_array(object);
-
 
 func _ready():
 	angle = global_position.direction_to(target);
@@ -24,25 +24,25 @@ func _ready():
 			speed = 100
 			damage = 5
 			knockback_amount = 100
-			attack_size = 1.0 * (1 + player.spell_size)
+			attack_size = 1.0 * (1 + oz)
 		2:
 			hp = 1
 			speed = 100
 			damage = 5
 			knockback_amount = 100
-			attack_size = 1.0 * (1 + player.spell_size)
+			attack_size = 1.0 * (1 + oz)
 		3:
 			hp = 2
 			speed = 100
 			damage = 5
 			knockback_amount = 100
-			attack_size = 1.0 * (1 + player.spell_size)
+			attack_size = 1.0 * (1 + oz)
 		4:
 			hp = 1
 			speed = 100
 			damage = 5
 			knockback_amount = 100
-			attack_size = 1.0 * (1 + player.spell_size)
+			attack_size = 1.0 * (1 + oz)
 	
 	var tween = create_tween();
 	tween.tween_property(self,"scale",Vector2(1,1)*attack_size,1).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_OUT);

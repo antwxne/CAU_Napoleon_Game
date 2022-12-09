@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://Sprite/DeathKnight_idle.png" type="Texture" id=1]
 [ext_resource path="res://Sprite/DeathKnight_walk.png" type="Texture" id=2]
@@ -155,6 +155,9 @@ animations = [ {
 [sub_resource type="CapsuleShape2D" id=29]
 radius = 25.0
 
+[sub_resource type="CircleShape2D" id=32]
+radius = 2948.1
+
 [node name="Player" type="KinematicBody2D" groups=["player"]]
 script = ExtResource( 3 )
 
@@ -166,7 +169,6 @@ shape = SubResource( 27 )
 position = Vector2( 1, -10 )
 frames = SubResource( 28 )
 animation = "idle"
-frame = 2
 playing = true
 
 [node name="hurtbox" parent="." instance=ExtResource( 4 )]
@@ -179,12 +181,22 @@ shape = SubResource( 29 )
 
 [node name="attack" type="Node2D" parent="."]
 
-[node name="Timer" type="Timer" parent="attack"]
+[node name="spearTimer" type="Timer" parent="attack"]
 unique_name_in_owner = true
+wait_time = 1.5
 
-[node name="SpearAttackTimer" type="Timer" parent="attack/Timer"]
+[node name="spearAttackTimer" type="Timer" parent="attack/spearTimer"]
 unique_name_in_owner = true
+wait_time = 0.075
+
+[node name="detectEnemies" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detectEnemies"]
+shape = SubResource( 32 )
 
 [connection signal="hurt" from="hurtbox" to="." method="_on_hurtbox_hurt"]
+[connection signal="timeout" from="attack/spearTimer" to="." method="_on_spearTimer_timeout"]
+[connection signal="timeout" from="attack/spearTimer/spearAttackTimer" to="." method="_on_spearAttackTimer_timeout"]
+[connection signal="body_entered" from="detectEnemies" to="." method="_on_detectEnemies_body_entered"]
 
 [editable path="hurtbox"]
