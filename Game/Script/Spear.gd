@@ -57,7 +57,6 @@ func _on_Spear_body_entered(body):
 	if body.name != "Player":
 		body.hp -= damage;
 		damage =  5;
-		print("Spear hp:" + str(body.hp));
 		hp -= 1;
 		if hp <= 0:
 			emit_signal("remove_from_array",self);
