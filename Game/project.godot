@@ -11,7 +11,7 @@ config_version=4
 [application]
 
 config/name="Napoleon"
-run/main_scene="res://Menu.tscn"
+run/main_scene="res://Menu/Menu.tscn"
 config/icon="res://icon.png"
 
 [autoload]

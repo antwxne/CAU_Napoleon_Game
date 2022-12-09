@@ -68,14 +68,14 @@ func _ready():
 
 	update_label();
 
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed("ui_change_tab"):
 		tab = 0 if tab == 2 else tab + 1;
 		$TabContainer.set_current_tab(tab);
 		tabsFocus[tab].grab_focus();
 
 func _on_Return_pressed():
-	get_tree().change_scene("res://Menu.tscn");
+	return get_tree().change_scene("res://Menu/Menu.tscn");
 
 func _on_VideoMode_item_selected(index):
 	GlobalSettings.togglefullscreen(true if index == 1 else false);

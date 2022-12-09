@@ -7,10 +7,10 @@ func _on_Play_pressed():
 	get_tree().change_scene("res://Main.tscn");
 
 func _on_Settings_pressed():
-	get_tree().change_scene("res://SettingsMenu.tscn");
+	get_tree().change_scene("res://Menu/SettingsMenu.tscn");
 
 func _on_MainMenu_pressed():
-	get_tree().change_scene("res://Menu.tscn");
+	get_tree().change_scene("res://Menu/Menu.tscn");
 
 func _on_Left_pressed():
 	get_tree().quit();

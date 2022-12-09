@@ -2,8 +2,8 @@
 
 [ext_resource path="res://Script/Menu.gd" type="Script" id=1]
 [ext_resource path="res://Font/Roboto-Black.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://fpsDisplay.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Sprite/chinese-coin.png" type="Texture" id=4]
+[ext_resource path="res://Sprite/chinese-coin.png" type="Texture" id=3]
+[ext_resource path="res://Hud/fpsDisplay.tscn" type="PackedScene" id=4]
 
 [sub_resource type="DynamicFont" id=2]
 size = 20
@@ -35,7 +35,7 @@ text = "Gold: 10"
 [node name="Chinese-coin" type="Sprite" parent="Label"]
 position = Vector2( 98, 13 )
 scale = Vector2( 0.0346679, 0.0341796 )
-texture = ExtResource( 4 )
+texture = ExtResource( 3 )
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="."]
 anchor_left = 0.5
@@ -95,7 +95,7 @@ margin_bottom = 168.0
 focus_neighbour_bottom = NodePath("../Play")
 text = "Exit"
 
-[node name="Control" parent="." instance=ExtResource( 3 )]
+[node name="Control" parent="." instance=ExtResource( 4 )]
 rect_pivot_offset = Vector2( 168, 288 )
 
 [node name="Time" type="OptionButton" parent="."]

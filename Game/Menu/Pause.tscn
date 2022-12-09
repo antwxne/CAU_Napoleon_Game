@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Script/Pause.gd" type="Script" id=1]
 [ext_resource path="res://Font/Roboto-Black.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://fpsDisplay.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Hud/fpsDisplay.tscn" type="PackedScene" id=3]
 
 [sub_resource type="DynamicFont" id=1]
 size = 25
@@ -62,7 +62,7 @@ margin_top = 1.0
 margin_right = 501.0
 margin_bottom = 21.0
 focus_neighbour_top = NodePath("../Left")
-text = "Resume"
+text = "Restart"
 
 [node name="Settings" type="Button" parent="VBoxContainer"]
 margin_top = 50.0
@@ -87,6 +87,6 @@ text = "Exit"
 [connection signal="pressed" from="VBoxContainer/Settings" to="." method="_on_Settings_pressed"]
 [connection signal="pressed" from="VBoxContainer/MainMenu" to="." method="_on_Exit_pressed"]
 [connection signal="pressed" from="VBoxContainer/MainMenu" to="." method="_on_MainMenu_pressed"]
-[connection signal="pressed" from="VBoxContainer/Left" to="." method="_on_Exit_pressed"]
 [connection signal="pressed" from="VBoxContainer/Left" to="." method="_on_Player_Stats_pressed"]
+[connection signal="pressed" from="VBoxContainer/Left" to="." method="_on_Exit_pressed"]
 [connection signal="pressed" from="VBoxContainer/Left" to="." method="_on_Left_pressed"]

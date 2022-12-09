@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://hurtbox.tscn" type="PackedScene" id=1]
-[ext_resource path="res://hitbox.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Utiles/hurtbox.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Utiles/hitbox.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Sprite/Beholder_idle.png" type="Texture" id=3]
 [ext_resource path="res://Script/beholder.gd" type="Script" id=4]
 

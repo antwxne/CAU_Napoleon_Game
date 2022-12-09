@@ -3,11 +3,11 @@
 [ext_resource path="res://Sprite/DeathKnight_idle.png" type="Texture" id=1]
 [ext_resource path="res://Sprite/DeathKnight_walk.png" type="Texture" id=2]
 [ext_resource path="res://Script/MainCharacter.gd" type="Script" id=3]
-[ext_resource path="res://hurtbox.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Utiles/hurtbox.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Sprite/DeathKnight_hit.png" type="Texture" id=5]
 
 [sub_resource type="CapsuleShape2D" id=27]
-radius = 25.0
+radius = 20.0
 
 [sub_resource type="AtlasTexture" id=30]
 flags = 4
@@ -153,7 +153,7 @@ animations = [ {
 } ]
 
 [sub_resource type="CapsuleShape2D" id=29]
-radius = 28.0
+radius = 25.0
 
 [node name="Player" type="KinematicBody2D" groups=["player"]]
 script = ExtResource( 3 )
@@ -166,7 +166,7 @@ shape = SubResource( 27 )
 position = Vector2( 1, -10 )
 frames = SubResource( 28 )
 animation = "idle"
-frame = 3
+frame = 2
 playing = true
 
 [node name="hurtbox" parent="." instance=ExtResource( 4 )]

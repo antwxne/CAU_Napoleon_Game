@@ -59,4 +59,4 @@ func _on_UpgradeArmor_pressed():
 		_update();
 
 func _on_Return_pressed():
-	get_tree().change_scene("res://Menu.tscn");
+	return get_tree().change_scene("res://Menu/Menu.tscn");

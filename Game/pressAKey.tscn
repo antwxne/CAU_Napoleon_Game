@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Font/Roboto-Black.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Script/keyPressed.gd" type="Script" id=2]
-[ext_resource path="res://fpsDisplay.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Hud/fpsDisplay.tscn" type="PackedScene" id=3]
 
 [sub_resource type="Theme" id=1]
 

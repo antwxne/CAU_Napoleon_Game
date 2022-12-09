@@ -1,8 +1,6 @@
 extends Node
 
 signal fps(value);
-signal brightness_updated(value);
-signal mouse_sens(value);
 
 func togglefullscreen(value):
 	OS.window_fullscreen = value;

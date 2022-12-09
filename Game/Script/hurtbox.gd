@@ -41,9 +41,7 @@ func _on_hurtbox_area_entered(area):
 			if area.has_method("enemy_hit"):
 				area.enemy_hit(1)
 				
-			emit_signal("hurt",damage, angle, knockback)
-			
-
+			emit_signal("hurt",damage, angle, knockback);
 
 func _on_Timer_timeout():
 	collision.call_deferred("set","disabled",false)
