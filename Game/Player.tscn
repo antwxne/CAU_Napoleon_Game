@@ -169,6 +169,7 @@ shape = SubResource( 27 )
 position = Vector2( 1, -10 )
 frames = SubResource( 28 )
 animation = "idle"
+frame = 3
 playing = true
 
 [node name="hurtbox" parent="." instance=ExtResource( 4 )]
@@ -183,7 +184,6 @@ shape = SubResource( 29 )
 
 [node name="spearTimer" type="Timer" parent="attack"]
 unique_name_in_owner = true
-wait_time = 1.5
 
 [node name="spearAttackTimer" type="Timer" parent="attack/spearTimer"]
 unique_name_in_owner = true
@@ -198,5 +198,6 @@ shape = SubResource( 32 )
 [connection signal="timeout" from="attack/spearTimer" to="." method="_on_spearTimer_timeout"]
 [connection signal="timeout" from="attack/spearTimer/spearAttackTimer" to="." method="_on_spearAttackTimer_timeout"]
 [connection signal="body_entered" from="detectEnemies" to="." method="_on_detectEnemies_body_entered"]
+[connection signal="body_exited" from="detectEnemies" to="." method="_on_detectEnemies_body_exited"]
 
 [editable path="hurtbox"]

@@ -56,6 +56,12 @@ script = ExtResource( 5 )
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 325, 190 )
 
+[node name="AnimatedSprite" parent="Player" index="1"]
+frame = 2
+
+[node name="detectEnemies" parent="Player" index="4"]
+visible = false
+
 [node name="ParticuleMove" type="CPUParticles2D" parent="Player"]
 emitting = false
 amount = 50
@@ -110,21 +116,6 @@ tile_data = PoolIntArray( 721071, 0, 65537, 721085, 0, 0, 721086, 0, 1, 721087, 
 [node name="Slime" parent="." instance=ExtResource( 6 )]
 position = Vector2( 486, 190 )
 
-[node name="beholder" parent="." instance=ExtResource( 8 )]
-position = Vector2( 300, 409 )
-
-[node name="bulette" parent="." instance=ExtResource( 9 )]
-position = Vector2( 96, 234 )
-
-[node name="Dragon" parent="." instance=ExtResource( 10 )]
-position = Vector2( 154, 384 )
-
-[node name="golem" parent="." instance=ExtResource( 11 )]
-position = Vector2( 442, 372 )
-
-[node name="beast" parent="." instance=ExtResource( 12 )]
-position = Vector2( 163, 86 )
-
 [node name="xp2" parent="." instance=ExtResource( 13 )]
 position = Vector2( -79, 126 )
 xp = 6
@@ -135,6 +126,21 @@ xp = 40
 
 [node name="xp" parent="." instance=ExtResource( 13 )]
 position = Vector2( 342, 99 )
+
+[node name="golem" parent="." instance=ExtResource( 11 )]
+position = Vector2( 334, -152 )
+
+[node name="beholder" parent="." instance=ExtResource( 8 )]
+position = Vector2( 69, 132 )
+
+[node name="beast" parent="." instance=ExtResource( 12 )]
+position = Vector2( 143, 341 )
+
+[node name="bulette" parent="." instance=ExtResource( 9 )]
+position = Vector2( 386, 421 )
+
+[node name="Dragon" parent="." instance=ExtResource( 10 )]
+position = Vector2( 201, 464 )
 
 [connection signal="xp" from="Player" to="Camera/hud" method="_on_Player_xp"]
 [connection signal="hurt" from="Player/hurtbox" to="Camera/hud" method="_on_hurtbox_hurt"]

@@ -34,25 +34,27 @@ animations = [ {
 } ]
 
 [sub_resource type="CircleShape2D" id=6]
-radius = 17.0
+radius = 32.0156
 
 [sub_resource type="CircleShape2D" id=7]
-radius = 31.0161
+radius = 49.0102
 
 [sub_resource type="CircleShape2D" id=8]
-radius = 32.0
+radius = 52.0096
 
 [node name="Dragon" type="KinematicBody2D"]
 script = ExtResource( 4 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 33.5, 20.5 )
+scale = Vector2( 1.69792, 1.64062 )
 frames = SubResource( 5 )
 animation = "walk"
-frame = 2
+frame = 3
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 3 )
+position = Vector2( 33, 28 )
 shape = SubResource( 6 )
 
 [node name="hitbox" parent="." instance=ExtResource( 3 )]
@@ -61,7 +63,7 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" parent="hitbox" index="0"]
-position = Vector2( 0, 4 )
+position = Vector2( 33, 28 )
 shape = SubResource( 7 )
 
 [node name="hurtbox" parent="." instance=ExtResource( 2 )]
@@ -70,7 +72,7 @@ collision_layer = 4
 collision_mask = 4
 
 [node name="CollisionShape2D" parent="hurtbox" index="0"]
-position = Vector2( -1, 4 )
+position = Vector2( 32, 28 )
 shape = SubResource( 8 )
 
 [editable path="hitbox"]

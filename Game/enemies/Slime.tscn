@@ -40,7 +40,6 @@ radius = 7.28011
 radius = 14.0
 
 [sub_resource type="CircleShape2D" id=8]
-radius = 13.1529
 
 [node name="Slime" type="KinematicBody2D"]
 script = ExtResource( 2 )
@@ -48,7 +47,6 @@ script = ExtResource( 2 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 5 )
 animation = "walk"
-frame = 3
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

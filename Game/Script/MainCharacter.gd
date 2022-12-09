@@ -4,7 +4,7 @@ export (int) var speed = 200
 
 onready var _animated_sprite = $AnimatedSprite
 
-export var velocity = Vector2()
+export var velocity = Vector2();
 
 var spear = preload("res://Weapons/Spear.tscn");
 
@@ -26,6 +26,8 @@ var oz = Save.gameData.player.offense_zone;
 
 var enemyClose = [];
 
+var tricks = 0;
+
 func _ready():
 	attack();
 
@@ -39,47 +41,30 @@ func get_input():
 	velocity = Vector2()
 
 	if Input.is_action_pressed("Down"):
-		$ParticuleMove.emitting = true;
-		$ParticuleMove.direction.x = 0;
-		$ParticuleMove.direction.y = -1;
 		velocity.y += 1
 		_animated_sprite.play("down_direction")
 		if Input.is_action_pressed("Right"):
-			$ParticuleMove.direction.x = -1;
 			velocity.x += 1
 			_animated_sprite.play("down_direction")
 		if Input.is_action_pressed("Left"):
-			$ParticuleMove.direction.x = 1;
 			velocity.x -= 1
 			_animated_sprite.play("down_direction")
 	elif Input.is_action_pressed("Up"):
-		$ParticuleMove.emitting = true;
-		$ParticuleMove.direction.x = 0;
-		$ParticuleMove.direction.y = 1;
 		velocity.y -= 1
 		_animated_sprite.play("up_direction")
 		if Input.is_action_pressed("Right"):
-			$ParticuleMove.direction.x = -1;
 			velocity.x += 1
 			_animated_sprite.play("up_direction")
 		if Input.is_action_pressed("Left"):
-			$ParticuleMove.direction.x = 1;
 			velocity.x -= 1
 			_animated_sprite.play("up_direction")
 	elif Input.is_action_pressed("Left"):
-		$ParticuleMove.emitting = true;
-		$ParticuleMove.direction.x = 1;
-		$ParticuleMove.direction.y = 0;
 		velocity.x -= 1
 		_animated_sprite.play("left_direction")
 	elif Input.is_action_pressed("Right"):
-		$ParticuleMove.emitting = true;
-		$ParticuleMove.direction.x = -1;
-		$ParticuleMove.direction.y = 0;
 		velocity.x += 1
 		_animated_sprite.play("right_direction")
 	else:
-		$ParticuleMove.emitting = false;
 		_animated_sprite.play("idle")
 
 	velocity = velocity.normalized() * speed
@@ -119,13 +104,18 @@ func find_closest_node_to_point(array, point):
 	return closest_node.global_position
 
 func _on_spearTimer_timeout():
-	spearAmmo += spearBaseAmmo;
+	if tricks == 6:
+		spearAmmo += spearBaseAmmo;
+		tricks = 0;
+	tricks += 1;
 	spearAttackTimer.start();
 
 func _on_spearAttackTimer_timeout():
 	if spearAmmo > 0:
 		var spearAttack = spear.instance();
-		spearAttack.position = position;
+		spearAttack.position = Vector2();
+		if enemyClose.size() == 0:
+			return;
 		spearAttack.target = find_closest_node_to_point(enemyClose, global_position);
 		spearAttack.level = spearLevel;
 		add_child(spearAttack);
@@ -134,3 +124,11 @@ func _on_spearAttackTimer_timeout():
 			spearAttackTimer.start();
 		else:
 			spearAttackTimer.stop();
+
+func _on_detectEnemies_body_exited(body):
+	var j = 0;
+	for i in enemyClose:
+		if i == body:
+			enemyClose.pop_at(j);
+			return;
+		j+=1;

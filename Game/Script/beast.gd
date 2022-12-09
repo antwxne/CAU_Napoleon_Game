@@ -15,6 +15,8 @@ func _ready():
 	anim.play("walk")
 
 func _physics_process(_delta):
+	if hp <= 0:
+		death();
 	knockback = knockback.move_toward(Vector2.ZERO, knockback_recovery)
 	var direction = global_position.direction_to(player.global_position)
 	var velocity = direction*movement_speed
@@ -27,12 +29,8 @@ func _physics_process(_delta):
 		sprite.flip_h = false
 
 func death():
+	queue_free();
 	var xp = xp_scene.instance()
 	xp.global_position = global_position
 	get_tree().get_root().add_child(xp)
-
-func _on_hitbox_hurt(damage, angle, knockback_amount):
-	hp -= damage
-	knockback = angle * knockback_amount
-	if hp <=0:
-		death()
+	
