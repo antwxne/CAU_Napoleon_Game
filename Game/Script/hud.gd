@@ -38,15 +38,11 @@ func _on_Player_gold(value):
 	gold = Save.gameData.player.gold;
 	$CanvasLayer/VBoxContainer/Label2.text = "Gold: " + str(gold);
 
-var hud_first = false;
-
 func _on_Player_weapons(value):
 	for i in value:
-		if i == "spear" && !hud_first:
+		if i == "spear":
 			$CanvasLayer/GridContainer/ItemContainer/TextureRect.set_texture(spear_sprite);
-			hud_first = true;
-		elif i == "tornado" && !hud_first:
-			$CanvasLayer/GridContainer/ItemContainer/TextureRect.set_texture(tornado_sprite);
-			hud_first = true;
+		elif i == "tornado":
+			$CanvasLayer/GridContainer/ItemContainer2/TextureRect.set_texture(tornado_sprite);
 		else:
-			$CanvasLayer/GridContainer/ItemContainer2/TextureRect.set_texture(spear_sprite);
+			$CanvasLayer/GridContainer/ItemContainer3/TextureRect.set_texture(spear_sprite);

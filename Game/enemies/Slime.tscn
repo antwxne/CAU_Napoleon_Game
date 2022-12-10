@@ -47,7 +47,7 @@ script = ExtResource( 2 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 5 )
 animation = "walk"
-frame = 1
+frame = 3
 playing = true
 
 [node name="Damage" type="CPUParticles2D" parent="AnimatedSprite"]

@@ -9,34 +9,41 @@ var attack_size = 1.0;
 var oz = Save.gameData.player.offense_zone / 2;
 
 var target = Vector2.ZERO;
+var base_pos = Vector2.ZERO;
 var angle = Vector2.ZERO;
 
 signal remove_from_array(object);
 
 func _ready():
-	angle = global_position.direction_to(target);
+	var rng = RandomNumberGenerator.new()
+	rng.randomize();
+	target.x = rng.randi_range(-1, 1);
+	target.y = rng.randi_range(-1, 1);
+	if target.x == 0 && target.y == 0:
+		target.x = -1;
+	angle = target;
 	$TornadoSprite.rotation = angle.angle();
 	match level:
 		1:
-			hp = 1
-			speed = 250
-			damage = 5
+			hp = 9999
+			speed = 230
+			damage = 2
 			knockback_amount = 100
 			attack_size = 1.0 * (1 + oz)
 		2:
-			hp = 1
+			hp = 9999
 			speed = 260
-			damage = 7
+			damage = 5
 			knockback_amount = 100
 			attack_size = 1.0 * (1 + oz)
 		3:
-			hp = 2
+			hp = 9999
 			speed = 275
 			damage = 10
 			knockback_amount = 100
 			attack_size = 1.0 * (1 + oz)
 		4:
-			hp = 3
+			hp = 9999
 			speed = 280
 			damage = 15
 			knockback_amount = 100

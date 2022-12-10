@@ -18,6 +18,7 @@ onready var tornadoAttackTimer = get_node("%tornadoAttackTimer")
 signal xp(value);
 signal gold(value);
 signal weapons(value);
+signal level(value);
 
 var attack_speed = Save.gameData.player.attack * 0.1 + 1;
 var armor = Save.gameData.player.armor * 2;
@@ -30,11 +31,11 @@ var weapons = [];
 var spearAmmo = 0;
 var spearBaseAmmo = 1;
 var spearSpeed = 0.2 / attack_speed;
-var spearLevel = 1;
+var spearLevel = 0;
 
 var tornadoAmmo = 0;
-var tornadoBaseAmmo = 1;
-var tornadoSpeed = 0.3 / attack_speed;
+var tornadoBaseAmmo = 5;
+var tornadoSpeed = 0.8 / attack_speed;
 var tornadoLevel = 1;
 
 var enemyClose = [];
@@ -106,7 +107,7 @@ func on_xp(value):
 	if xp >= max_xp:
 		xp -= max_xp;
 		max_xp += 10;
-	#call level up
+		emit_signal("level", [spearLevel, tornadoLevel]);
 
 func on_gold(value):
 	Save.gameData.player.gold += value;
@@ -158,7 +159,6 @@ func _on_detectEnemies_body_exited(body):
 			return;
 		j+=1;
 
-
 func _on_tornadoTimer_timeout():
 	if tricks == 6:
 		tornadoAmmo += tornadoBaseAmmo;
@@ -174,6 +174,7 @@ func _on_tornadoAttackTimer_timeout():
 		if enemyClose.size() == 0:
 			return;
 		tornadoAttack.target = find_closest_node_to_point(enemyClose, global_position);
+		tornadoAttack.base_pos = global_position;
 		tornadoAttack.level = tornadoLevel;
 		add_child(tornadoAttack);
 		tornadoAmmo -= 1;
