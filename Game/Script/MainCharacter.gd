@@ -17,6 +17,7 @@ onready var tornadoAttackTimer = get_node("%tornadoAttackTimer")
 
 signal xp(value);
 signal gold(value);
+signal weapons(value);
 
 var attack_speed = Save.gameData.player.attack * 0.1 + 1;
 var armor = Save.gameData.player.armor * 2;
@@ -24,6 +25,7 @@ var health = 50 + Save.gameData.player.health * 10;
 var xp = 0;
 var max_xp = 50;
 var oz = Save.gameData.player.offense_zone;
+var weapons = [];
 
 var spearAmmo = 0;
 var spearBaseAmmo = 1;
@@ -41,6 +43,7 @@ var tricks = 0;
 
 func _ready():
 	attack();
+	_check_level();
 
 func attack():
 	if spearLevel > 0:
@@ -178,3 +181,7 @@ func _on_tornadoAttackTimer_timeout():
 			tornadoAttackTimer.start();
 		else:
 			tornadoAttackTimer.stop();
+func _check_level():
+	if spearLevel > 0:
+		weapons.push_back("spear");
+	emit_signal("weapons", weapons);

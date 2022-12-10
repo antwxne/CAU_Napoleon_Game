@@ -56,6 +56,9 @@ script = ExtResource( 5 )
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 325, 190 )
 
+[node name="AnimatedSprite" parent="Player" index="1"]
+frame = 2
+
 [node name="ParticuleMove" type="CPUParticles2D" parent="Player"]
 emitting = false
 amount = 50
@@ -132,6 +135,7 @@ position = Vector2( 342, 99 )
 [node name="golem" parent="." instance=ExtResource( 11 )]
 
 [connection signal="gold" from="Player" to="Camera/hud" method="_on_Player_gold"]
+[connection signal="weapons" from="Player" to="Camera/hud" method="_on_Player_weapons"]
 [connection signal="xp" from="Player" to="Camera/hud" method="_on_Player_xp"]
 [connection signal="hurt" from="Player/hurtbox" to="Camera/hud" method="_on_hurtbox_hurt"]
 
