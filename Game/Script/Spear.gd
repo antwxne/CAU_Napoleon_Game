@@ -54,7 +54,7 @@ func _on_Timer_timeout():
 	queue_free();
 
 func _on_Spear_body_entered(body):
-	if body.name != "Player":
+	if body.name != "Player" && body.name != "Tornado":
 		body.hp -= damage;
 		body.dmg.emitting = true;
 		damage =  5;

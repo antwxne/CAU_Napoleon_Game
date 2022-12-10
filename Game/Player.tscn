@@ -170,7 +170,7 @@ shape = SubResource( 27 )
 position = Vector2( 1, -10 )
 frames = SubResource( 28 )
 animation = "idle"
-frame = 3
+frame = 2
 playing = true
 
 [node name="Damage" type="CPUParticles2D" parent="AnimatedSprite"]
@@ -217,7 +217,7 @@ unique_name_in_owner = true
 
 [node name="tornadoAttackTimer" type="Timer" parent="attack/tornadoTimer"]
 unique_name_in_owner = true
-wait_time = 0.075
+wait_time = 0.08
 
 [node name="detectEnemies" type="Area2D" parent="."]
 visible = false

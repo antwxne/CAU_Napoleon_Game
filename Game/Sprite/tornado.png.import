@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/76.png-9898811288adfef35009726aa398904a.stex"
+path="res://.import/tornado.png-bf0830d80736c49477acf014eaf2efeb.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprite/76.png"
-dest_files=[ "res://.import/76.png-9898811288adfef35009726aa398904a.stex" ]
+source_file="res://Sprite/tornado.png"
+dest_files=[ "res://.import/tornado.png-bf0830d80736c49477acf014eaf2efeb.stex" ]
 
 [params]
 
