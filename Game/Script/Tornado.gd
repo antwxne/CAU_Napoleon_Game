@@ -15,7 +15,7 @@ signal remove_from_array(object);
 
 func _ready():
 	angle = global_position.direction_to(target);
-	$SpearSprite.rotation = angle.angle();
+	$TornadoSprite.rotation = angle.angle();
 	match level:
 		1:
 			hp = 1
@@ -53,8 +53,8 @@ func _on_Timer_timeout():
 	emit_signal("remove_from_array",self);
 	queue_free();
 
-func _on_Spear_body_entered(body):
-	if body.name != "Player" && body.name != "Tornado":
+func _on_Tornado_body_entered(body):
+	if body.name != "Player":
 		body.hp -= damage;
 		body.dmg.emitting = true;
 		damage =  5;

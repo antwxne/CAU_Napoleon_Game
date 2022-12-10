@@ -7,9 +7,13 @@ onready var _animated_sprite = $AnimatedSprite
 export var velocity = Vector2();
 
 var spear = preload("res://Weapons/Spear.tscn");
+var tornado = preload("res://Weapons/Tornado.tscn")
 
 onready var spearTimer = get_node("%spearTimer");
 onready var spearAttackTimer = get_node("%spearAttackTimer");
+
+onready var tornadoTimer = get_node("%tornadoTimer")
+onready var tornadoAttackTimer = get_node("%tornadoAttackTimer")
 
 signal xp(value);
 signal gold(value);
@@ -28,6 +32,11 @@ var spearBaseAmmo = 1;
 var spearSpeed = 0.2 / attack_speed;
 var spearLevel = 1;
 
+var tornadoAmmo = 0;
+var tornadoBaseAmmo = 1;
+var tornadoSpeed = 0.3 / attack_speed;
+var tornadoLevel = 1;
+
 var enemyClose = [];
 
 var tricks = 0;
@@ -41,6 +50,10 @@ func attack():
 		spearTimer.wait_time = spearSpeed;
 		if spearTimer.is_stopped():
 			spearTimer.start();
+	if tornadoLevel > 0:
+		tornadoTimer.wait_time = tornadoSpeed
+		if tornadoTimer.is_stopped():
+			tornadoTimer.start();
 
 func get_input():
 	velocity = Vector2()
@@ -121,6 +134,7 @@ func _on_spearTimer_timeout():
 	tricks += 1;
 	spearAttackTimer.start();
 
+
 func _on_spearAttackTimer_timeout():
 	if spearAmmo > 0:
 		var spearAttack = spear.instance();
@@ -144,7 +158,32 @@ func _on_detectEnemies_body_exited(body):
 			return;
 		j+=1;
 
+
+func _on_tornadoTimer_timeout():
+	if tricks == 6:
+		tornadoAmmo += tornadoBaseAmmo;
+		tricks = 0;
+	tricks += 1;
+	tornadoAttackTimer.start();
+
+
+func _on_tornadoAttackTimer_timeout():
+	if tornadoAmmo > 0:
+		var tornadoAttack = tornado.instance();
+		tornadoAttack.position = Vector2();
+		if enemyClose.size() == 0:
+			return;
+		tornadoAttack.target = find_closest_node_to_point(enemyClose, global_position);
+		tornadoAttack.level = tornadoLevel;
+		add_child(tornadoAttack);
+		tornadoAmmo -= 1;
+		if tornadoAmmo > 0:
+			tornadoAttackTimer.start();
+		else:
+			tornadoAttackTimer.stop();
 func _check_level():
 	if spearLevel > 0:
 		weapons.push_back("spear");
+	if tornadoLevel > 0:
+		weapons.push_back("tornado");
 	emit_signal("weapons", weapons);
