@@ -26,7 +26,7 @@ func load_data():
 				"Left": "A",
 			},
 			"player": {
-				"gold": 10,
+				"gold": 100,
 				"health": 0,
 				"attack": 0,
 				"offense_zone": 0,

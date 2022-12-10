@@ -16,7 +16,7 @@ func _ready():
 	_update();
 
 func _update():
-	$GridContainer2/Attack.text = "Attack level: " +  str(attack);
+	$GridContainer2/Attack.text = "Attack Speed level: " +  str(attack);
 	$GridContainer2/Armor.text = "Armor level: " +  str(armor);
 	$GridContainer2/Health.text = "Health level: " +  str(health);
 	$GridContainer2/OffenseZone.text = "Offense zone level: " +  str(oz);

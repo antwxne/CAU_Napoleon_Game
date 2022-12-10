@@ -12,6 +12,8 @@ func _ready():
 	
 func update():
 	$CanvasLayer/VBoxContainer/Label2.text = "Gold: " + str(gold);
+	#$CanvasLayer/GridContainer/ItemContainer.rect_min_sizesize.x = 50;
+	#$CanvasLayer/GridContainer/ItemContainer.size.y = 50;
 
 func _process(delta):
 	time += delta;

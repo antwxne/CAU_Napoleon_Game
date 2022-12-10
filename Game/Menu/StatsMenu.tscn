@@ -62,7 +62,7 @@ columns = 2
 margin_top = 3.0
 margin_right = 136.0
 margin_bottom = 17.0
-text = "Attack level: 0"
+text = "Attack Speed level: 0"
 
 [node name="UpgradeAttack" type="Button" parent="GridContainer2"]
 margin_left = 140.0

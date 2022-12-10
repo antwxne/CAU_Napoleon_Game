@@ -50,6 +50,7 @@ position = Vector2( 33.5, 20.5 )
 scale = Vector2( 1.69792, 1.64062 )
 frames = SubResource( 5 )
 animation = "walk"
+frame = 1
 playing = true
 
 [node name="Damage" type="CPUParticles2D" parent="AnimatedSprite"]

@@ -6,7 +6,7 @@ var speed = 250;
 var damage = 5;
 var knockback_amount = 100;
 var attack_size = 1.0;
-var oz = Save.gameData.player.offense_zone;
+var oz = Save.gameData.player.offense_zone / 2;
 
 var target = Vector2.ZERO;
 var angle = Vector2.ZERO;
@@ -25,20 +25,20 @@ func _ready():
 			attack_size = 1.0 * (1 + oz)
 		2:
 			hp = 1
-			speed = 250
-			damage = 5
+			speed = 260
+			damage = 7
 			knockback_amount = 100
 			attack_size = 1.0 * (1 + oz)
 		3:
 			hp = 2
-			speed = 250
-			damage = 5
+			speed = 275
+			damage = 10
 			knockback_amount = 100
 			attack_size = 1.0 * (1 + oz)
 		4:
-			hp = 1
-			speed = 250
-			damage = 5
+			hp = 3
+			speed = 280
+			damage = 15
 			knockback_amount = 100
 			attack_size = 1.0 * (1 + oz)
 	
