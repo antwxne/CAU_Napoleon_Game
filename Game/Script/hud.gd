@@ -7,13 +7,13 @@ var base_health = 50 + Save.gameData.player.health * 10;
 var xp = 0;
 var max_xp = 50;
 
+var spear_sprite = preload("res://Sprite/Spear.png");
+
 func _ready():
 	update();
 	
 func update():
 	$CanvasLayer/VBoxContainer/Label2.text = "Gold: " + str(gold);
-	#$CanvasLayer/GridContainer/ItemContainer.rect_min_sizesize.x = 50;
-	#$CanvasLayer/GridContainer/ItemContainer.size.y = 50;
 
 func _process(delta):
 	time += delta;
@@ -36,3 +36,13 @@ func _on_Player_xp(value):
 func _on_Player_gold(value):
 	gold = Save.gameData.player.gold;
 	$CanvasLayer/VBoxContainer/Label2.text = "Gold: " + str(gold);
+
+var hud_first = false;
+
+func _on_Player_weapons(value):
+	for i in value:
+		if i == "spear" && !hud_first:
+			$CanvasLayer/GridContainer/ItemContainer/TextureRect.set_texture(spear_sprite);
+			hud_first = true;
+		else:
+			$CanvasLayer/GridContainer/ItemContainer2/TextureRect.set_texture(spear_sprite);

@@ -170,6 +170,7 @@ shape = SubResource( 27 )
 position = Vector2( 1, -10 )
 frames = SubResource( 28 )
 animation = "idle"
+frame = 3
 playing = true
 
 [node name="Damage" type="CPUParticles2D" parent="AnimatedSprite"]
