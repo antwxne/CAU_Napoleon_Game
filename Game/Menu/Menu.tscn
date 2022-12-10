@@ -110,8 +110,8 @@ margin_bottom = -97.0
 rect_min_size = Vector2( 150, 20 )
 focus_neighbour_top = NodePath("../Return")
 size_flags_horizontal = 10
-text = "5 mins"
-items = [ "5 mins", null, false, 0, null, "15 mins", null, false, 1, null, "30 mins", null, false, 2, null ]
+text = "2 mins"
+items = [ "2 mins", null, false, 0, null, "5 mins", null, false, 1, null, "10 mins", null, false, 2, null ]
 selected = 0
 
 [connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_Play_pressed"]

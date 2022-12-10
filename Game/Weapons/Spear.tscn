@@ -18,7 +18,7 @@ texture = ExtResource( 1 )
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="SpearSprite"]
 position = Vector2( 17, 0 )
-amount = 12
+amount = 5
 speed_scale = 1.5
 randomness = 1.0
 lifetime_randomness = 1.0

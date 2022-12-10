@@ -30,3 +30,7 @@ func _on_Player_xp(value):
 		xp -= max_xp;
 		max_xp += 10;
 	$CanvasLayer/VBoxContainer/xp.value = (xp * 100 / max_xp);
+
+func _on_Player_gold(value):
+	gold = Save.gameData.player.gold;
+	$CanvasLayer/VBoxContainer/Label2.text = "Gold: " + str(gold);

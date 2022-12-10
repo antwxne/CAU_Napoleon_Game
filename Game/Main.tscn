@@ -57,10 +57,7 @@ script = ExtResource( 5 )
 position = Vector2( 325, 190 )
 
 [node name="AnimatedSprite" parent="Player" index="1"]
-frame = 2
-
-[node name="detectEnemies" parent="Player" index="4"]
-visible = false
+frame = 1
 
 [node name="ParticuleMove" type="CPUParticles2D" parent="Player"]
 emitting = false
@@ -127,21 +124,17 @@ xp = 40
 [node name="xp" parent="." instance=ExtResource( 13 )]
 position = Vector2( 342, 99 )
 
-[node name="golem" parent="." instance=ExtResource( 11 )]
-position = Vector2( 334, -152 )
+[node name="beast" parent="." instance=ExtResource( 12 )]
 
 [node name="beholder" parent="." instance=ExtResource( 8 )]
-position = Vector2( 69, 132 )
-
-[node name="beast" parent="." instance=ExtResource( 12 )]
-position = Vector2( 143, 341 )
-
-[node name="bulette" parent="." instance=ExtResource( 9 )]
-position = Vector2( 386, 421 )
 
 [node name="Dragon" parent="." instance=ExtResource( 10 )]
-position = Vector2( 201, 464 )
 
+[node name="bulette" parent="." instance=ExtResource( 9 )]
+
+[node name="golem" parent="." instance=ExtResource( 11 )]
+
+[connection signal="gold" from="Player" to="Camera/hud" method="_on_Player_gold"]
 [connection signal="xp" from="Player" to="Camera/hud" method="_on_Player_xp"]
 [connection signal="hurt" from="Player/hurtbox" to="Camera/hud" method="_on_hurtbox_hurt"]
 

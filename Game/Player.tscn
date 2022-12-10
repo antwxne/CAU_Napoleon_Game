@@ -162,6 +162,7 @@ radius = 2948.1
 script = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2( 0, -10 )
 shape = SubResource( 27 )
 
@@ -172,7 +173,28 @@ animation = "idle"
 frame = 3
 playing = true
 
+[node name="Damage" type="CPUParticles2D" parent="AnimatedSprite"]
+position = Vector2( 0, 13 )
+emitting = false
+amount = 30
+lifetime = 0.5
+one_shot = true
+emission_shape = 1
+emission_sphere_radius = 3.94
+direction = Vector2( 0, -1 )
+gravity = Vector2( 0, 0 )
+initial_velocity = 55.0
+initial_velocity_random = 0.7
+angular_velocity = 435.96
+angular_velocity_random = 0.44
+linear_accel = 10.0
+angle = 720.0
+angle_random = 1.0
+scale_amount = 2.0
+color = Color( 1, 0.196078, 0.196078, 1 )
+
 [node name="hurtbox" parent="." instance=ExtResource( 4 )]
+visible = false
 collision_layer = 2
 collision_mask = 2
 
@@ -181,6 +203,7 @@ position = Vector2( 0, -10 )
 shape = SubResource( 29 )
 
 [node name="attack" type="Node2D" parent="."]
+visible = false
 
 [node name="spearTimer" type="Timer" parent="attack"]
 unique_name_in_owner = true
@@ -190,6 +213,7 @@ unique_name_in_owner = true
 wait_time = 0.075
 
 [node name="detectEnemies" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="detectEnemies"]
 shape = SubResource( 32 )

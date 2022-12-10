@@ -56,6 +56,7 @@ func _on_Timer_timeout():
 func _on_Spear_body_entered(body):
 	if body.name != "Player":
 		body.hp -= damage;
+		body.dmg.emitting = true;
 		damage =  5;
 		hp -= 1;
 		if hp <= 0:

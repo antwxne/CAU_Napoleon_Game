@@ -12,6 +12,7 @@ onready var spearTimer = get_node("%spearTimer");
 onready var spearAttackTimer = get_node("%spearAttackTimer");
 
 signal xp(value);
+signal gold(value);
 
 var spearAmmo = 0;
 var spearBaseAmmo = 1;
@@ -75,6 +76,7 @@ func _physics_process(_delta):
 
 func _on_hurtbox_hurt(damage, _angle, _knockback):
 	health -= clamp(damage - armor, 1.0, 999.0);
+	$AnimatedSprite/Damage.emitting = true;
 	if health <= 0:
 		death()
 
@@ -88,6 +90,11 @@ func on_xp(value):
 		xp -= max_xp;
 		max_xp += 10;
 	#call level up
+
+func on_gold(value):
+	Save.gameData.player.gold += value;
+	Save.save_data();
+	emit_signal("gold", value);
 
 func _on_detectEnemies_body_entered(body):
 	if body.name != "Player":

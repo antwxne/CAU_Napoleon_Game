@@ -26,9 +26,9 @@ func _on_Exit_pressed():
 
 func _on_Time_item_focused(index):
 	if index == 0:
-		Save.gameData.time = 5;
+		Save.gameData.time = 2;
 	if index == 1:
-		Save.gameData.time = 15;
+		Save.gameData.time = 5;
 	if index == 2:
-		Save.gameData.time = 30;
+		Save.gameData.time = 10;
 	Save.save_data();

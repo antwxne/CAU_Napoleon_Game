@@ -50,14 +50,33 @@ position = Vector2( 33.5, 20.5 )
 scale = Vector2( 1.69792, 1.64062 )
 frames = SubResource( 5 )
 animation = "walk"
-frame = 3
 playing = true
 
+[node name="Damage" type="CPUParticles2D" parent="AnimatedSprite"]
+position = Vector2( 0.294479, 12.4952 )
+emitting = false
+amount = 30
+lifetime = 0.5
+one_shot = true
+emission_shape = 1
+emission_sphere_radius = 10.0
+direction = Vector2( 0, -1 )
+gravity = Vector2( 0, 0 )
+initial_velocity = 40.0
+initial_velocity_random = 0.7
+angular_velocity = 435.96
+angular_velocity_random = 0.44
+angle = 720.0
+scale_amount = 2.0
+color = Color( 0.960784, 0.176471, 0.176471, 1 )
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2( 33, 28 )
 shape = SubResource( 6 )
 
 [node name="hitbox" parent="." instance=ExtResource( 3 )]
+visible = false
 light_mask = 0
 collision_layer = 2
 collision_mask = 2
@@ -67,6 +86,7 @@ position = Vector2( 33, 28 )
 shape = SubResource( 7 )
 
 [node name="hurtbox" parent="." instance=ExtResource( 2 )]
+visible = false
 position = Vector2( 1, 0 )
 collision_layer = 4
 collision_mask = 4

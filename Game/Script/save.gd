@@ -18,7 +18,7 @@ func load_data():
 			"master_vol": -10,
 			"music_vol": -10,
 			"vfx_vol": -10,
-			"time": 5,
+			"time": 2,
 			"input": {
 				"Up": "W",
 				"Down": "S",
