@@ -8,12 +8,16 @@ export var velocity = Vector2();
 
 var spear = preload("res://Weapons/Spear.tscn");
 var tornado = preload("res://Weapons/Tornado.tscn")
+var mama = preload("res://Weapons/Mama.tscn")
 
 onready var spearTimer = get_node("%spearTimer");
 onready var spearAttackTimer = get_node("%spearAttackTimer");
 
 onready var tornadoTimer = get_node("%tornadoTimer")
 onready var tornadoAttackTimer = get_node("%tornadoAttackTimer")
+
+onready var mamaTimer = get_node("%mamaTimer")
+onready var mamaAttackTimer = get_node("%mamaAttackTimer")
 
 signal xp(value);
 signal gold(value);
@@ -38,6 +42,11 @@ var tornadoBaseAmmo = 5;
 var tornadoSpeed = 0.8 / attack_speed;
 var tornadoLevel = 1;
 
+var mamaAmmo = 0;
+var mamaBaseAmmo = 1;
+var mamaSpeed = 0.4 / attack_speed;
+var mamaLevel = 1;
+
 var enemyClose = [];
 
 var tricks = 0;
@@ -55,6 +64,10 @@ func attack():
 		tornadoTimer.wait_time = tornadoSpeed
 		if tornadoTimer.is_stopped():
 			tornadoTimer.start();
+	if mamaLevel > 0:
+		mamaTimer.wait_time = mamaSpeed
+		if mamaTimer.is_stopped():
+			mamaTimer.start();
 
 func get_input():
 	velocity = Vector2()
@@ -187,4 +200,30 @@ func _check_level():
 		weapons.push_back("spear");
 	if tornadoLevel > 0:
 		weapons.push_back("tornado");
+	if mamaLevel > 0:
+		weapons.push_back("mama");
 	emit_signal("weapons", weapons);
+
+
+func _on_mamaTimer_timeout():
+	if tricks == 6:
+		mamaAmmo += mamaBaseAmmo;
+		tricks = 0;
+	tricks += 1;
+	mamaAttackTimer.start();
+
+
+func _on_mamaAttackTimer_timeout():
+	if mamaAmmo > 0:
+		var mamaAttack = mama.instance();
+		mamaAttack.position = Vector2();
+		if enemyClose.size() == 0:
+			return;
+		mamaAttack.target = find_closest_node_to_point(enemyClose, global_position);
+		mamaAttack.level = mamaLevel;
+		add_child(mamaAttack);
+		mamaAmmo -= 1;
+		if mamaAmmo > 0:
+			mamaAttackTimer.start();
+		else:
+			mamaAttackTimer.stop();
