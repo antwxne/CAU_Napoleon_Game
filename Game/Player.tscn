@@ -170,6 +170,7 @@ shape = SubResource( 27 )
 position = Vector2( 1, -10 )
 frames = SubResource( 28 )
 animation = "idle"
+frame = 3
 playing = true
 
 [node name="Damage" type="CPUParticles2D" parent="AnimatedSprite"]
@@ -211,6 +212,13 @@ unique_name_in_owner = true
 unique_name_in_owner = true
 wait_time = 0.075
 
+[node name="tornadoTimer" type="Timer" parent="attack"]
+unique_name_in_owner = true
+
+[node name="tornadoAttackTimer" type="Timer" parent="attack/tornadoTimer"]
+unique_name_in_owner = true
+wait_time = 0.075
+
 [node name="detectEnemies" type="Area2D" parent="."]
 visible = false
 
@@ -220,6 +228,8 @@ shape = SubResource( 32 )
 [connection signal="hurt" from="hurtbox" to="." method="_on_hurtbox_hurt"]
 [connection signal="timeout" from="attack/spearTimer" to="." method="_on_spearTimer_timeout"]
 [connection signal="timeout" from="attack/spearTimer/spearAttackTimer" to="." method="_on_spearAttackTimer_timeout"]
+[connection signal="timeout" from="attack/tornadoTimer" to="." method="_on_tornadoTimer_timeout"]
+[connection signal="timeout" from="attack/tornadoTimer/tornadoAttackTimer" to="." method="_on_tornadoAttackTimer_timeout"]
 [connection signal="body_entered" from="detectEnemies" to="." method="_on_detectEnemies_body_entered"]
 [connection signal="body_exited" from="detectEnemies" to="." method="_on_detectEnemies_body_exited"]
 
