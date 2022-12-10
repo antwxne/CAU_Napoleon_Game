@@ -35,7 +35,7 @@ var weapons = [];
 var spearAmmo = 0;
 var spearBaseAmmo = 1;
 var spearSpeed = 0.2 / attack_speed;
-var spearLevel = 0;
+var spearLevel = 1;
 
 var tornadoAmmo = 0;
 var tornadoBaseAmmo = 5;
@@ -44,7 +44,7 @@ var tornadoLevel = 1;
 
 var mamaAmmo = 0;
 var mamaBaseAmmo = 1;
-var mamaSpeed = 0.4 / attack_speed;
+var mamaSpeed = 0.1 / attack_speed;
 var mamaLevel = 1;
 
 var enemyClose = [];
@@ -195,6 +195,7 @@ func _on_tornadoAttackTimer_timeout():
 			tornadoAttackTimer.start();
 		else:
 			tornadoAttackTimer.stop();
+
 func _check_level():
 	if spearLevel > 0:
 		weapons.push_back("spear");

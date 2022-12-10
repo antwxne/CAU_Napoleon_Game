@@ -9,6 +9,7 @@ var max_xp = 50;
 
 var spear_sprite = preload("res://Sprite/Spear.png");
 var tornado_sprite = preload("res://Sprite/tornado.png");
+var mama_sprite = preload("res://Sprite/mama.png");
 
 func _ready():
 	update();
@@ -44,5 +45,5 @@ func _on_Player_weapons(value):
 			$CanvasLayer/GridContainer/ItemContainer/TextureRect.set_texture(spear_sprite);
 		elif i == "tornado":
 			$CanvasLayer/GridContainer/ItemContainer2/TextureRect.set_texture(tornado_sprite);
-		else:
-			$CanvasLayer/GridContainer/ItemContainer3/TextureRect.set_texture(spear_sprite);
+		elif i == "mama":
+			$CanvasLayer/GridContainer/ItemContainer3/TextureRect.set_texture(mama_sprite);

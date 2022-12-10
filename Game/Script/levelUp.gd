@@ -17,3 +17,7 @@ func _on_Upgrade_pressed():
 func _on_Skip_pressed():
 	visible = false;
 	get_tree().paused = false;
+
+
+func _on_UpgradeMama_pressed():
+	pass # Replace with function body.

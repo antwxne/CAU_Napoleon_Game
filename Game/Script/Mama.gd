@@ -13,32 +13,36 @@ var angle = Vector2.ZERO;
 
 signal remove_from_array(object);
 
+var rng = RandomNumberGenerator.new()
+
 func _ready():
-	angle = global_position.direction_to(target);
+	target.x = 1;
+	target.y = 0;
+	angle = target;
 	$MamaSprite.rotation = angle.angle();
 	match level:
 		1:
 			hp = 1
-			speed = 250
-			damage = 5
+			speed = 300
+			damage = 1
 			knockback_amount = 100
 			attack_size = 1.0 * (1 + oz)
 		2:
 			hp = 1
-			speed = 260
-			damage = 7
+			speed = 320
+			damage = 2
 			knockback_amount = 100
 			attack_size = 1.0 * (1 + oz)
 		3:
-			hp = 2
-			speed = 275
-			damage = 10
+			hp = 1
+			speed = 340
+			damage = 3
 			knockback_amount = 100
 			attack_size = 1.0 * (1 + oz)
 		4:
-			hp = 3
-			speed = 280
-			damage = 15
+			hp = 1
+			speed = 350
+			damage = 4
 			knockback_amount = 100
 			attack_size = 1.0 * (1 + oz)
 	
@@ -47,6 +51,9 @@ func _ready():
 	tween.play();
 
 func _physics_process(delta):
+	rng.randomize();
+	angle.x = rng.randi_range(-1, 1);
+	angle.y = rng.randi_range(-1, 1);
 	position += angle*speed*delta;
 
 func _on_Timer_timeout():
