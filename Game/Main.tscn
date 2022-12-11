@@ -47,7 +47,7 @@ script = ExtResource( 5 )
 position = Vector2( 325, 190 )
 
 [node name="AnimatedSprite" parent="Player" index="1"]
-frame = 1
+frame = 0
 
 [node name="Camera" type="Camera2D" parent="."]
 position = Vector2( 512, 297 )

@@ -1,15 +1,24 @@
-extends Node
+extends Control
 
-func _ready():
-	$VBoxContainer/Play.grab_focus();
+func _input(event):
+	if event is InputEventKey:
+		if event.pressed and event.scancode == KEY_ESCAPE:
+			visible = true;
+			get_tree().paused = true;
+			$VBoxContainer/Play.grab_focus();
 
 func _on_Play_pressed():
-	get_tree().change_scene("res://Main.tscn");
+	visible = false;
+	get_tree().paused = false;
 
 func _on_Settings_pressed():
+	visible = false;
+	get_tree().paused = false;
 	get_tree().change_scene("res://Menu/SettingsMenu.tscn");
 
 func _on_MainMenu_pressed():
+	visible = false;
+	get_tree().paused = false;
 	get_tree().change_scene("res://Menu/Menu.tscn");
 
 func _on_Left_pressed():

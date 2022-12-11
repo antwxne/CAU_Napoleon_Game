@@ -19,8 +19,9 @@ func _process(_delta):
 		elif direction.x < -0.1:
 			$sprite_xp.flip_h = false;
 
-func _on_xp_body_entered(_body):
-	no_move = false;
+func _on_xp_body_entered(body):
+	if body.name == "Player":
+		no_move = false;
 
 func _on_delete_body_entered(body):
 	if body.has_method("on_gold"):
