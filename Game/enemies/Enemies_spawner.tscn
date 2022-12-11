@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Script/enemies_spawner_script.gd" type="Script" id=1]
+
+[node name="Enemies_spawener" type="Node"]
+script = ExtResource( 1 )
+
+[node name="Timers" type="Node" parent="."]
+
+[node name="frequency_timer" type="Timer" parent="Timers"]
+autostart = true
+
+[node name="spawn_timer" type="Timer" parent="Timers"]
+wait_time = 2.449
+autostart = true
+
+[connection signal="timeout" from="Timers/spawn_timer" to="." method="spawn_random_enemy_on_random_spawner"]
