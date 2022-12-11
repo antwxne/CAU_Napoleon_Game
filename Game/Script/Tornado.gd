@@ -26,25 +26,25 @@ func _ready():
 	match level:
 		1:
 			hp = 9999
-			speed = 230
+			speed = 600
 			damage = 2
 			knockback_amount = 100
 			attack_size = 1.0 * (1 + oz)
 		2:
 			hp = 9999
-			speed = 260
+			speed = 700
 			damage = 5
 			knockback_amount = 100
 			attack_size = 1.0 * (1 + oz)
 		3:
 			hp = 9999
-			speed = 275
+			speed = 800
 			damage = 10
 			knockback_amount = 100
 			attack_size = 1.0 * (1 + oz)
 		4:
 			hp = 9999
-			speed = 280
+			speed = 900
 			damage = 15
 			knockback_amount = 100
 			attack_size = 1.0 * (1 + oz)

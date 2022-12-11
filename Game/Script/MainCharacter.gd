@@ -40,12 +40,12 @@ var spearLevel = 1;
 var tornadoAmmo = 0;
 var tornadoBaseAmmo = 5;
 var tornadoSpeed = 0.8 / attack_speed;
-var tornadoLevel = 1;
+var tornadoLevel = 0;
 
 var mamaAmmo = 0;
 var mamaBaseAmmo = 1;
 var mamaSpeed = 0.1 / attack_speed;
-var mamaLevel = 1;
+var mamaLevel = 0;
 
 var enemyClose = [];
 
@@ -120,7 +120,7 @@ func on_xp(value):
 	if xp >= max_xp:
 		xp -= max_xp;
 		max_xp += 10;
-		emit_signal("level", [spearLevel, tornadoLevel]);
+		emit_signal("level", [spearLevel, tornadoLevel, mamaLevel]);
 
 func on_gold(value):
 	Save.gameData.player.gold += value;
@@ -228,3 +228,19 @@ func _on_mamaAttackTimer_timeout():
 			mamaAttackTimer.start();
 		else:
 			mamaAttackTimer.stop();
+
+func _on_levelUp_spearLvlUp(value):
+	spearLevel = value;
+
+func _on_levelUp_axeLvlUp(value):
+	tornadoBaseAmmo += 1;
+	tornadoLevel = value;
+	if tornadoLevel == 1:
+		attack();
+		_check_level();
+	
+func _on_levelUp_daggerLvlUp(value):
+	mamaLevel = value;
+	if mamaLevel == 1:
+		attack();
+		_check_level();

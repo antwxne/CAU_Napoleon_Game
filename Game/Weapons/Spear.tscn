@@ -37,7 +37,5 @@ shape = SubResource( 1 )
 
 [node name="Timer" type="Timer" parent="."]
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-
 [connection signal="body_entered" from="." to="." method="_on_Spear_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

@@ -16,8 +16,9 @@ signal remove_from_array(object);
 var rng = RandomNumberGenerator.new()
 
 func _ready():
-	target.x = 1;
-	target.y = 0;
+	rng.randomize();
+	target.x = rng.randi_range(-1, 1);
+	target.y = rng.randi_range(-1, 1);
 	angle = target;
 	$MamaSprite.rotation = angle.angle();
 	match level:

@@ -4,7 +4,7 @@
 [ext_resource path="res://Sprite/gdb-coinsgemsetc-1.png" type="Texture" id=2]
 
 [sub_resource type="CircleShape2D" id=26]
-radius = 84.006
+radius = 67.0
 
 [sub_resource type="CircleShape2D" id=29]
 radius = 8.0

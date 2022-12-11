@@ -73,13 +73,6 @@ margin_right = 86.0
 margin_left = 90.0
 margin_right = 155.0
 
-[node name="\?\?\?\?" parent="Camera/hud/CanvasLayer/CanvasLayer/levelUp/GridContainer2" index="4"]
-margin_right = 86.0
-
-[node name="Upgrade\?\?\?" parent="Camera/hud/CanvasLayer/CanvasLayer/levelUp/GridContainer2" index="5"]
-margin_left = 90.0
-margin_right = 155.0
-
 [node name="Skip" parent="Camera/hud/CanvasLayer/CanvasLayer/levelUp/GridContainer2" index="6"]
 margin_right = 86.0
 
@@ -133,6 +126,9 @@ position = Vector2( -151, -30 )
 [connection signal="weapons" from="Player" to="Camera/hud" method="_on_Player_weapons"]
 [connection signal="xp" from="Player" to="Camera/hud" method="_on_Player_xp"]
 [connection signal="hurt" from="Player/hurtbox" to="Camera/hud" method="_on_hurtbox_hurt"]
+[connection signal="axeLvlUp" from="Camera/hud/CanvasLayer/CanvasLayer/levelUp" to="Player" method="_on_levelUp_axeLvlUp"]
+[connection signal="daggerLvlUp" from="Camera/hud/CanvasLayer/CanvasLayer/levelUp" to="Player" method="_on_levelUp_daggerLvlUp"]
+[connection signal="spearLvlUp" from="Camera/hud/CanvasLayer/CanvasLayer/levelUp" to="Player" method="_on_levelUp_spearLvlUp"]
 
 [editable path="Player"]
 [editable path="Player/hurtbox"]

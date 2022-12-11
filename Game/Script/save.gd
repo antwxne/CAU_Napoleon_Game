@@ -31,7 +31,7 @@ func load_data():
 				"attack": 0,
 				"offense_zone": 0,
 				"armor": 0,
-			}
+			},
 		}
 		save_data();
 	file.open(SAVEFILE, file.READ);

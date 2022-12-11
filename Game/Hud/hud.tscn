@@ -105,10 +105,10 @@ texture = ExtResource( 5 )
 expand = true
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/GridContainer/ItemContainer2"]
-margin_left = 8.0
-margin_top = 32.0
-margin_right = 48.0
-margin_bottom = 42.0
+margin_left = 3.0
+margin_top = 20.0
+margin_right = 43.0
+margin_bottom = 37.0
 rect_rotation = -33.0
 
 [node name="ItemContainer3" type="TextureRect" parent="CanvasLayer/GridContainer"]
@@ -190,13 +190,13 @@ margin_right = 181.0
 margin_bottom = 79.0
 text = "Upgrade"
 
-[node name="\?\?\?\?" type="Label" parent="CanvasLayer/CanvasLayer/levelUp/GridContainer2"]
+[node name="mama" type="Label" parent="CanvasLayer/CanvasLayer/levelUp/GridContainer2"]
 margin_top = 121.0
 margin_right = 112.0
 margin_bottom = 135.0
-text = "???? level: 0"
+text = "Dagger level: 0"
 
-[node name="Upgrade\?\?\?" type="Button" parent="CanvasLayer/CanvasLayer/levelUp/GridContainer2"]
+[node name="UpgradeMama" type="Button" parent="CanvasLayer/CanvasLayer/levelUp/GridContainer2"]
 margin_left = 116.0
 margin_top = 118.0
 margin_right = 181.0
@@ -212,5 +212,5 @@ text = "Skip"
 
 [connection signal="pressed" from="CanvasLayer/CanvasLayer/levelUp/GridContainer2/UpgradeSpear" to="CanvasLayer/CanvasLayer/levelUp" method="_on_UpgradeSpear_pressed"]
 [connection signal="pressed" from="CanvasLayer/CanvasLayer/levelUp/GridContainer2/UpgradeAxe" to="CanvasLayer/CanvasLayer/levelUp" method="_on_UpgradeAxe_pressed"]
-[connection signal="pressed" from="CanvasLayer/CanvasLayer/levelUp/GridContainer2/Upgrade???" to="CanvasLayer/CanvasLayer/levelUp" method="_on_Upgrade_pressed"]
+[connection signal="pressed" from="CanvasLayer/CanvasLayer/levelUp/GridContainer2/UpgradeMama" to="CanvasLayer/CanvasLayer/levelUp" method="_on_UpgradeMama_pressed"]
 [connection signal="pressed" from="CanvasLayer/CanvasLayer/levelUp/GridContainer2/Skip" to="CanvasLayer/CanvasLayer/levelUp" method="_on_Skip_pressed"]
