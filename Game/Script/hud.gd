@@ -4,6 +4,7 @@ var gold = Save.gameData.player.gold;
 var time = 0;
 var health = 50 + Save.gameData.player.health * 10;
 var base_health = 50 + Save.gameData.player.health * 10;
+var armor = Save.gameData.player.armor * 2;
 var xp = 0;
 var max_xp = 50;
 
@@ -25,7 +26,7 @@ func _process(delta):
 	$CanvasLayer/VBoxContainer/Label.text = "%02d : %02d : %03d" % [mins, sec, mils];
 
 func _on_hurtbox_hurt(damage, _angle, _knockback):
-	health -= damage;
+	health -= clamp(damage - armor, 1.0, 999.0);
 	$CanvasLayer/VBoxContainer/health.value = (health * 100 / base_health);
 
 func _on_Player_xp(value):

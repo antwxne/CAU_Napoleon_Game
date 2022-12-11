@@ -1,12 +1,17 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Font/Roboto-Black.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Script/Victory.gd" type="Script" id=2]
 [ext_resource path="res://Hud/fpsDisplay.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Sprite/Line1.png" type="Texture" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 50
 font_data = ExtResource( 1 )
+
+[sub_resource type="Gradient" id=2]
+offsets = PoolRealArray( 0.196774, 0.329032 )
+colors = PoolColorArray( 1, 1, 1, 1, 0.48085, 0.473764, 0.473764, 1 )
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -69,6 +74,48 @@ margin_left = 3.0
 margin_top = 89.0
 margin_right = 3.0
 margin_bottom = 89.0
+
+[node name="Particles2D2" type="CPUParticles2D" parent="."]
+position = Vector2( 843, 366 )
+amount = 100
+texture = ExtResource( 4 )
+emission_shape = 1
+emission_sphere_radius = 100.0
+flag_align_y = true
+gravity = Vector2( 0, 0 )
+radial_accel = -200.0
+scale_amount = 3.0
+color_ramp = SubResource( 2 )
+hue_variation = 1.0
+hue_variation_random = 1.0
+
+[node name="Particles2D" type="CPUParticles2D" parent="."]
+position = Vector2( 224, 535 )
+amount = 100
+texture = ExtResource( 4 )
+emission_shape = 1
+emission_sphere_radius = 100.0
+flag_align_y = true
+gravity = Vector2( 0, 0 )
+radial_accel = -200.0
+scale_amount = 3.0
+color_ramp = SubResource( 2 )
+hue_variation = 1.0
+hue_variation_random = 1.0
+
+[node name="Particles2D4" type="CPUParticles2D" parent="."]
+position = Vector2( 321, 187 )
+amount = 100
+texture = ExtResource( 4 )
+emission_shape = 1
+emission_sphere_radius = 100.0
+flag_align_y = true
+gravity = Vector2( 0, 0 )
+radial_accel = -200.0
+scale_amount = 3.0
+color_ramp = SubResource( 2 )
+hue_variation = 1.0
+hue_variation_random = 1.0
 
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="Button2" to="." method="_on_Button2_pressed"]

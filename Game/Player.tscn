@@ -170,7 +170,6 @@ shape = SubResource( 27 )
 position = Vector2( 1, -10 )
 frames = SubResource( 28 )
 animation = "idle"
-frame = 3
 playing = true
 
 [node name="Damage" type="CPUParticles2D" parent="AnimatedSprite"]
@@ -203,7 +202,6 @@ position = Vector2( 0, -10 )
 shape = SubResource( 29 )
 
 [node name="attack" type="Node2D" parent="."]
-visible = false
 
 [node name="spearTimer" type="Timer" parent="attack"]
 unique_name_in_owner = true
@@ -224,7 +222,7 @@ unique_name_in_owner = true
 
 [node name="mamaAttackTimer" type="Timer" parent="attack/mamaTimer"]
 unique_name_in_owner = true
-wait_time = 0.08
+wait_time = 0.09
 
 [node name="detectEnemies" type="Area2D" parent="."]
 visible = false

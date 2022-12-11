@@ -32,6 +32,7 @@ scale_amount = 1.5
 scale_amount_random = 0.5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2( 22, 5 )
 shape = SubResource( 1 )
 

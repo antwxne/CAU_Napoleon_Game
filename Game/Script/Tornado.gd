@@ -11,6 +11,7 @@ var oz = Save.gameData.player.offense_zone / 2;
 var target = Vector2.ZERO;
 var base_pos = Vector2.ZERO;
 var angle = Vector2.ZERO;
+var rota = 0;
 
 signal remove_from_array(object);
 
@@ -23,28 +24,29 @@ func _ready():
 		target.x = -1;
 	angle = target;
 	$TornadoSprite.rotation = angle.angle();
+	rota = angle.angle();
 	match level:
 		1:
 			hp = 9999
-			speed = 600
-			damage = 2
+			speed = 375
+			damage = 3
 			knockback_amount = 100
 			attack_size = 1.0 * (1 + oz)
 		2:
 			hp = 9999
-			speed = 700
+			speed = 400
 			damage = 5
 			knockback_amount = 100
 			attack_size = 1.0 * (1 + oz)
 		3:
 			hp = 9999
-			speed = 800
+			speed = 425
 			damage = 10
 			knockback_amount = 100
 			attack_size = 1.0 * (1 + oz)
 		4:
 			hp = 9999
-			speed = 900
+			speed = 450
 			damage = 15
 			knockback_amount = 100
 			attack_size = 1.0 * (1 + oz)
@@ -54,6 +56,10 @@ func _ready():
 	tween.play();
 
 func _physics_process(delta):
+	rota += 0.25;
+	if int(rota) > 360:
+		rota = 0;
+	$TornadoSprite.rotation = int(rota);
 	position += angle*speed*delta;
 
 func _on_Timer_timeout():

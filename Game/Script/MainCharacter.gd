@@ -38,7 +38,7 @@ var spearSpeed = 0.2 / attack_speed;
 var spearLevel = 1;
 
 var tornadoAmmo = 0;
-var tornadoBaseAmmo = 5;
+var tornadoBaseAmmo = 2;
 var tornadoSpeed = 0.8 / attack_speed;
 var tornadoLevel = 0;
 
@@ -48,8 +48,6 @@ var mamaSpeed = 0.1 / attack_speed;
 var mamaLevel = 0;
 
 var enemyClose = [];
-
-var tricks = 0;
 
 func _ready():
 	attack();
@@ -141,13 +139,14 @@ func find_closest_node_to_point(array, point):
 			closest_node_distance = current_node_distance
 	return closest_node.global_position
 
-func _on_spearTimer_timeout():
-	if tricks == 6:
-		spearAmmo += spearBaseAmmo;
-		tricks = 0;
-	tricks += 1;
-	spearAttackTimer.start();
+var tricksS = 0;
 
+func _on_spearTimer_timeout():
+	if tricksS == 6:
+		spearAmmo += spearBaseAmmo;
+		tricksS = 0;
+	tricksS += 1;
+	spearAttackTimer.start();
 
 func _on_spearAttackTimer_timeout():
 	if spearAmmo > 0:
@@ -172,11 +171,13 @@ func _on_detectEnemies_body_exited(body):
 			return;
 		j+=1;
 
+var tricksT = 0;
+
 func _on_tornadoTimer_timeout():
-	if tricks == 6:
+	if tricksT == 4:
 		tornadoAmmo += tornadoBaseAmmo;
-		tricks = 0;
-	tricks += 1;
+		tricksT = 0;
+	tricksT += 1;
 	tornadoAttackTimer.start();
 
 
@@ -205,9 +206,10 @@ func _check_level():
 		weapons.push_back("mama");
 	emit_signal("weapons", weapons);
 
+var tricks = 0;
 
 func _on_mamaTimer_timeout():
-	if tricks == 6:
+	if tricks == 8:
 		mamaAmmo += mamaBaseAmmo;
 		tricks = 0;
 	tricks += 1;
