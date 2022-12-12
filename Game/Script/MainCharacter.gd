@@ -26,7 +26,7 @@ signal level(value);
 
 var attack_speed = Save.gameData.player.attack * 0.1 + 1;
 var armor = Save.gameData.player.armor * 2;
-var health = 50 + Save.gameData.player.health * 10;
+var health = 40 + Save.gameData.player.health * 10;
 var xp = 0;
 var max_xp = 50;
 var oz = Save.gameData.player.offense_zone;

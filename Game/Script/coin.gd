@@ -9,7 +9,7 @@ func _ready():
 	pass;
 
 func _process(_delta):
-	if !no_move:
+	if !no_move && !str(player)=="[Deleted Object]":
 		var direction = global_position.direction_to(player.global_position);
 		var velocity = direction*movement_speed;
 		move_and_slide(velocity);

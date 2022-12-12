@@ -21,6 +21,8 @@ func _physics_process(_delta):
 	if hp <= 0:
 		death();
 	knockback = knockback.move_toward(Vector2.ZERO, knockback_recovery)
+	if str(player)=="[Deleted Object]":
+		return;
 	var direction = global_position.direction_to(player.global_position)
 	var velocity = direction*movement_speed
 	velocity += knockback

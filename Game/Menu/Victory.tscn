@@ -14,7 +14,6 @@ offsets = PoolRealArray( 0.196774, 0.329032 )
 colors = PoolColorArray( 1, 1, 1, 1, 0.48085, 0.473764, 0.473764, 1 )
 
 [node name="Control" type="Control"]
-pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -3.0

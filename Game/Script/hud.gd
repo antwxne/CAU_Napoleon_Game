@@ -2,8 +2,8 @@ extends Control
 
 var gold = Save.gameData.player.gold;
 var time = 0;
-var health = 50 + Save.gameData.player.health * 10;
-var base_health = 50 + Save.gameData.player.health * 10;
+var health = 40 + Save.gameData.player.health * 10;
+var base_health = 40 + Save.gameData.player.health * 10;
 var armor = Save.gameData.player.armor * 2;
 var xp = 0;
 var max_xp = 50;
@@ -36,7 +36,7 @@ func _on_Player_xp(value):
 		max_xp += 10;
 	$CanvasLayer/VBoxContainer/xp.value = (xp * 100 / max_xp);
 
-func _on_Player_gold(value):
+func _on_Player_gold(_value):
 	gold = Save.gameData.player.gold;
 	$CanvasLayer/VBoxContainer/Label2.text = "Gold: " + str(gold);
 

@@ -13,8 +13,6 @@ var base_pos = Vector2.ZERO;
 var angle = Vector2.ZERO;
 var rota = 0;
 
-signal remove_from_array(object);
-
 func _ready():
 	var rng = RandomNumberGenerator.new()
 	rng.randomize();
@@ -30,25 +28,25 @@ func _ready():
 			hp = 9999
 			speed = 375
 			damage = 3
-			knockback_amount = 100
+			knockback_amount = 125
 			attack_size = 1.0 * (1 + oz)
 		2:
 			hp = 9999
 			speed = 400
 			damage = 5
-			knockback_amount = 100
+			knockback_amount = 150
 			attack_size = 1.0 * (1 + oz)
 		3:
 			hp = 9999
 			speed = 425
 			damage = 10
-			knockback_amount = 100
+			knockback_amount = 160
 			attack_size = 1.0 * (1 + oz)
 		4:
 			hp = 9999
 			speed = 450
 			damage = 15
-			knockback_amount = 100
+			knockback_amount = 170
 			attack_size = 1.0 * (1 + oz)
 	
 	var tween = create_tween();
@@ -63,7 +61,6 @@ func _physics_process(delta):
 	position += angle*speed*delta;
 
 func _on_Timer_timeout():
-	emit_signal("remove_from_array",self);
 	queue_free();
 
 func _on_Tornado_body_entered(body):
@@ -71,7 +68,7 @@ func _on_Tornado_body_entered(body):
 		body.hp -= damage;
 		body.dmg.emitting = true;
 		damage =  5;
+		body.knockback = angle * knockback_amount;
 		hp -= 1;
 		if hp <= 0:
-			emit_signal("remove_from_array",self);
 			queue_free();

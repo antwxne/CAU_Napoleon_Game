@@ -115,10 +115,16 @@ position = Vector2( -44, 191 )
 [node name="Enemies_spawners" parent="." instance=ExtResource( 14 )]
 
 [node name="Spawner" type="Position2D" parent="Enemies_spawners"]
-position = Vector2( -521, 909 )
+position = Vector2( -122, 943 )
 
 [node name="Spawner2" type="Position2D" parent="Enemies_spawners"]
-position = Vector2( 1437, -238 )
+position = Vector2( 1519, 32 )
+
+[node name="Spawner3" type="Position2D" parent="Enemies_spawners"]
+position = Vector2( 1072, 923 )
+
+[node name="Spawner4" type="Position2D" parent="Enemies_spawners"]
+position = Vector2( -250, -107 )
 
 [connection signal="gold" from="Player" to="Camera/hud" method="_on_Player_gold"]
 [connection signal="level" from="Player" to="Camera/hud/CanvasLayer/CanvasLayer/levelUp" method="_on_Player_level"]

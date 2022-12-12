@@ -11,8 +11,6 @@ var oz = Save.gameData.player.offense_zone / 2;
 var target = Vector2.ZERO;
 var angle = Vector2.ZERO;
 
-signal remove_from_array(object);
-
 var rng = RandomNumberGenerator.new()
 
 func _ready():
@@ -26,25 +24,25 @@ func _ready():
 			hp = 1
 			speed = 300
 			damage = 1
-			knockback_amount = 100
+			knockback_amount = 50
 			attack_size = 1.0 * (1 + oz)
 		2:
 			hp = 1
 			speed = 320
 			damage = 2
-			knockback_amount = 100
+			knockback_amount = 65
 			attack_size = 1.0 * (1 + oz)
 		3:
 			hp = 1
 			speed = 340
 			damage = 3
-			knockback_amount = 100
+			knockback_amount = 75
 			attack_size = 1.0 * (1 + oz)
 		4:
 			hp = 1
 			speed = 350
 			damage = 4
-			knockback_amount = 100
+			knockback_amount = 80
 			attack_size = 1.0 * (1 + oz)
 	
 	var tween = create_tween();
@@ -58,7 +56,6 @@ func _physics_process(delta):
 	position += angle*speed*delta;
 
 func _on_Timer_timeout():
-	emit_signal("remove_from_array",self);
 	queue_free();
 
 func _on_Mama_body_entered(body):
@@ -66,7 +63,7 @@ func _on_Mama_body_entered(body):
 		body.hp -= damage;
 		body.dmg.emitting = true;
 		damage =  5;
+		body.knockback = angle * knockback_amount;
 		hp -= 1;
 		if hp <= 0:
-			emit_signal("remove_from_array",self);
 			queue_free();
