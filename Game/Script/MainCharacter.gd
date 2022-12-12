@@ -50,7 +50,6 @@ var axeLevel = 0;
 var daggerAmmo = 0;
 var daggerBaseAmmo = 1;
 var daggerSpeed = 1 / attack_speed;
-var daggerMaxAmmo = 5;
 var daggerLevel = 0;
 
 var enemyClose = [];
@@ -210,9 +209,7 @@ func _check_level():
 	emit_signal("weapons", weapons);
 
 func _on_daggerTimer_timeout():
-	print(daggerAmmo);
-	if daggerAmmo < daggerMaxAmmo:
-		daggerAmmo += daggerBaseAmmo;
+	daggerAmmo += daggerBaseAmmo;
 	daggerAttackTimer.start();
 
 func _on_daggerAttackTimer_timeout():
