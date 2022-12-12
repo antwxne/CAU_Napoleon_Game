@@ -1,6 +1,6 @@
 extends Node
 
-const MAX_ENEMIES: int = 2
+const MAX_ENEMIES: int = 4
 
 onready var _spawners_location: Array = []
 const _enemy_array: Array = [preload("res://enemies/beast.tscn"),

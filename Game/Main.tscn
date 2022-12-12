@@ -42,6 +42,9 @@ script = ExtResource( 5 )
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 325, 190 )
 
+[node name="AnimatedSprite" parent="Player" index="1"]
+frame = 1
+
 [node name="detectEnemies" parent="Player" index="4"]
 visible = true
 
