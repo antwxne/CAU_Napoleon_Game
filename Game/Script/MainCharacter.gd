@@ -49,7 +49,7 @@ var axeLevel = 0;
 
 var daggerAmmo = 0;
 var daggerBaseAmmo = 1;
-var daggerSpeed = 1 / attack_speed;
+var daggerSpeed = 1.3 / attack_speed;
 var daggerLevel = 0;
 
 var enemyClose = [];
