@@ -1,4 +1,4 @@
-extends YSort
+extends Node2D
 
 var time = 0;
 var endTimer = Save.gameData.time;
