@@ -50,7 +50,7 @@ tile_data = PoolIntArray( -2555924, 0, 0, -2555923, 0, 1, -2555922, 0, 1, -25559
 position = Vector2( 325, 190 )
 
 [node name="AnimatedSprite" parent="Player" index="1"]
-frame = 0
+frame = 2
 
 [node name="detectEnemies" parent="Player" index="4"]
 visible = true
