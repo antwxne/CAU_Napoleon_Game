@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/mama.png-bd8d2d650850c903049a07785a04e418.stex"
+path="res://.import/axe.png-6804b3316bb82143ec2c526412a37c99.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprite/mama.png"
-dest_files=[ "res://.import/mama.png-bd8d2d650850c903049a07785a04e418.stex" ]
+source_file="res://Sprite/axe.png"
+dest_files=[ "res://.import/axe.png-6804b3316bb82143ec2c526412a37c99.stex" ]
 
 [params]
 

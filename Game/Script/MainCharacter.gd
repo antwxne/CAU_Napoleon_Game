@@ -1,51 +1,56 @@
 extends KinematicBody2D
 
-export (int) var speed = 200
-
 onready var _animated_sprite = $AnimatedSprite
 
+export (int) var speed = 200
 export var velocity = Vector2();
 
+# Preaload
 var spear = preload("res://Weapons/Spear.tscn");
-var tornado = preload("res://Weapons/Tornado.tscn")
-var mama = preload("res://Weapons/Mama.tscn")
+var axe = preload("res://Weapons/Axe.tscn")
+var dagger = preload("res://Weapons/Dagger.tscn")
 
+# Attack Timers
 onready var spearTimer = get_node("%spearTimer");
 onready var spearAttackTimer = get_node("%spearAttackTimer");
 
-onready var tornadoTimer = get_node("%tornadoTimer")
-onready var tornadoAttackTimer = get_node("%tornadoAttackTimer")
+onready var axeTimer = get_node("%axeTimer")
+onready var axeAttackTimer = get_node("%axeAttackTimer")
 
-onready var mamaTimer = get_node("%mamaTimer")
-onready var mamaAttackTimer = get_node("%mamaAttackTimer")
+onready var daggerTimer = get_node("%daggerTimer")
+onready var daggerAttackTimer = get_node("%daggerAttackTimer")
 
+# Signals
 signal xp(value);
 signal gold(value);
 signal weapons(value);
 signal level(value);
+signal hp(value);
 
+# Player stats
 var attack_speed = Save.gameData.player.attack * 0.1 + 1;
 var armor = Save.gameData.player.armor * 2;
 var health = 40 + Save.gameData.player.health * 10;
 var xp = 0;
-var max_xp = 50;
+var max_xp = 30;
 var oz = Save.gameData.player.offense_zone;
 var weapons = [];
 
+# Weapons stats
 var spearAmmo = 0;
 var spearBaseAmmo = 1;
-var spearSpeed = 0.2 / attack_speed;
+var spearSpeed = 1 / attack_speed;
 var spearLevel = 1;
 
-var tornadoAmmo = 0;
-var tornadoBaseAmmo = 2;
-var tornadoSpeed = 0.8 / attack_speed;
-var tornadoLevel = 0;
+var axeAmmo = 0;
+var axeBaseAmmo = 2;
+var axeSpeed = 1.2 / attack_speed;
+var axeLevel = 0;
 
-var mamaAmmo = 0;
-var mamaBaseAmmo = 1;
-var mamaSpeed = 0.1 / attack_speed;
-var mamaLevel = 0;
+var daggerAmmo = 0;
+var daggerBaseAmmo = 1;
+var daggerSpeed = 1 / attack_speed;
+var daggerLevel = 0;
 
 var enemyClose = [];
 
@@ -58,14 +63,14 @@ func attack():
 		spearTimer.wait_time = spearSpeed;
 		if spearTimer.is_stopped():
 			spearTimer.start();
-	if tornadoLevel > 0:
-		tornadoTimer.wait_time = tornadoSpeed
-		if tornadoTimer.is_stopped():
-			tornadoTimer.start();
-	if mamaLevel > 0:
-		mamaTimer.wait_time = mamaSpeed
-		if mamaTimer.is_stopped():
-			mamaTimer.start();
+	if axeLevel > 0:
+		axeTimer.wait_time = axeSpeed;
+		if axeTimer.is_stopped():
+			axeTimer.start();
+	if daggerLevel > 0:
+		daggerTimer.wait_time = daggerSpeed
+		if daggerTimer.is_stopped():
+			daggerTimer.start();
 
 func get_input():
 	velocity = Vector2()
@@ -96,7 +101,6 @@ func get_input():
 		_animated_sprite.play("right_direction")
 	else:
 		_animated_sprite.play("idle")
-
 	velocity = velocity.normalized() * speed
 
 func _physics_process(_delta):
@@ -106,6 +110,7 @@ func _physics_process(_delta):
 func _on_hurtbox_hurt(damage, _angle, _knockback):
 	health -= clamp(damage - armor, 1.0, 999.0);
 	$AnimatedSprite/Damage.emitting = true;
+	emit_signal("hp", health);
 	if health <= 0:
 		death()
 
@@ -117,8 +122,8 @@ func on_xp(value):
 	xp += value;
 	if xp >= max_xp:
 		xp -= max_xp;
-		max_xp += 10;
-		emit_signal("level", [spearLevel, tornadoLevel, mamaLevel]);
+		max_xp += 20;
+		emit_signal("level", [spearLevel, axeLevel, daggerLevel]);
 
 func on_gold(value):
 	Save.gameData.player.gold += value;
@@ -139,13 +144,8 @@ func find_closest_node_to_point(array, point):
 			closest_node_distance = current_node_distance
 	return closest_node.global_position
 
-var tricksS = 0;
-
 func _on_spearTimer_timeout():
-	if tricksS == 6:
-		spearAmmo += spearBaseAmmo;
-		tricksS = 0;
-	tricksS += 1;
+	spearAmmo += spearBaseAmmo;
 	spearAttackTimer.start();
 
 func _on_spearAttackTimer_timeout():
@@ -171,78 +171,67 @@ func _on_detectEnemies_body_exited(body):
 			return;
 		j+=1;
 
-var tricksT = 0;
-
-func _on_tornadoTimer_timeout():
-	if tricksT == 4:
-		tornadoAmmo += tornadoBaseAmmo;
-		tricksT = 0;
-	tricksT += 1;
-	tornadoAttackTimer.start();
+func _on_axeTimer_timeout():
+	axeAmmo += axeBaseAmmo;
+	axeAttackTimer.start();
 
 
-func _on_tornadoAttackTimer_timeout():
-	if tornadoAmmo > 0:
-		var tornadoAttack = tornado.instance();
-		tornadoAttack.position = Vector2();
+func _on_axeAttackTimer_timeout():
+	if axeAmmo > 0:
+		var axeAttack = axe.instance();
+		axeAttack.position = Vector2();
 		if enemyClose.size() == 0:
 			return;
-		tornadoAttack.target = find_closest_node_to_point(enemyClose, global_position);
-		tornadoAttack.base_pos = global_position;
-		tornadoAttack.level = tornadoLevel;
-		add_child(tornadoAttack);
-		tornadoAmmo -= 1;
-		if tornadoAmmo > 0:
-			tornadoAttackTimer.start();
-		else:
-			tornadoAttackTimer.stop();
+		axeAttack.target = find_closest_node_to_point(enemyClose, global_position);
+		axeAttack.base_pos = global_position;
+		axeAttack.level = axeLevel;
+		add_child(axeAttack);
+		axeAmmo -= 1;
+		axeAmmo > 0 ? axeAttackTimer.start() : axeAttackTimer.stop();
 
 func _check_level():
 	if spearLevel > 0:
 		weapons.push_back("spear");
-	if tornadoLevel > 0:
-		weapons.push_back("tornado");
-	if mamaLevel > 0:
-		weapons.push_back("mama");
+	if axeLevel > 0:
+		weapons.push_back("axe");
+	if daggerLevel > 0:
+		weapons.push_back("dagger");
 	emit_signal("weapons", weapons);
 
-var tricks = 0;
+func _on_daggerTimer_timeout():
+	daggerAmmo += daggerBaseAmmo;
+	daggerAttackTimer.start();
 
-func _on_mamaTimer_timeout():
-	if tricks == 8:
-		mamaAmmo += mamaBaseAmmo;
-		tricks = 0;
-	tricks += 1;
-	mamaAttackTimer.start();
-
-
-func _on_mamaAttackTimer_timeout():
-	if mamaAmmo > 0:
-		var mamaAttack = mama.instance();
-		mamaAttack.position = Vector2();
+func _on_daggerAttackTimer_timeout():
+	if daggerAmmo > 0:
+		var daggerAttack = dagger.instance();
+		daggerAttack.position = Vector2();
 		if enemyClose.size() == 0:
 			return;
-		mamaAttack.target = find_closest_node_to_point(enemyClose, global_position);
-		mamaAttack.level = mamaLevel;
-		add_child(mamaAttack);
-		mamaAmmo -= 1;
-		if mamaAmmo > 0:
-			mamaAttackTimer.start();
+		daggerAttack.target = find_closest_node_to_point(enemyClose, global_position);
+		daggerAttack.level = daggerLevel;
+		add_child(daggerAttack);
+		daggerAmmo -= 1;
+		if daggerAmmo > 0:
+			daggerAttackTimer.start();
 		else:
-			mamaAttackTimer.stop();
+			daggerAttackTimer.stop();
 
 func _on_levelUp_spearLvlUp(value):
 	spearLevel = value;
+	spearSpeed -= 0.01; 
 
 func _on_levelUp_axeLvlUp(value):
-	tornadoBaseAmmo += 1;
-	tornadoLevel = value;
-	if tornadoLevel == 1:
+	axeBaseAmmo += 1;
+	axeLevel = value;
+	axeSpeed -= 0.01; 
+	if axeLevel == 1:
 		attack();
 		_check_level();
 	
 func _on_levelUp_daggerLvlUp(value):
-	mamaLevel = value;
-	if mamaLevel == 1:
+	daggerLevel = value;
+	daggerSpeed -= 0.05;
+	if daggerLevel == 1:
 		attack();
 		_check_level();

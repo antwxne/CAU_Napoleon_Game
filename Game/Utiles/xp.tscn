@@ -1,6 +1,6 @@
 [gd_scene load_steps=31 format=2]
 
-[ext_resource path="res://Script/KinematicBody2D.gd" type="Script" id=1]
+[ext_resource path="res://Script/xp.gd" type="Script" id=1]
 [ext_resource path="res://Sprite/gdb-coinsgemsetc-1.png" type="Texture" id=2]
 
 [sub_resource type="CircleShape2D" id=26]
@@ -179,6 +179,7 @@ disabled = true
 [node name="sprite_xp" type="AnimatedSprite" parent="."]
 frames = SubResource( 27 )
 animation = "orange"
+frame = 3
 playing = true
 
 [connection signal="body_entered" from="xp" to="." method="_on_xp_body_entered"]

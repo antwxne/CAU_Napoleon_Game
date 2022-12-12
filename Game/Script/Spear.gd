@@ -18,25 +18,25 @@ func _ready():
 		1:
 			hp = 1
 			speed = 250
-			damage = 5
+			damage = 7
 			knockback_amount = 140
 			attack_size = 1.0 * (1 + oz)
 		2:
 			hp = 2
 			speed = 260
-			damage = 7
+			damage = 12
 			knockback_amount = 160
 			attack_size = 1.0 * (1 + oz)
 		3:
 			hp = 3
 			speed = 275
-			damage = 10
+			damage = 17
 			knockback_amount = 180
 			attack_size = 1.0 * (1 + oz)
 		4:
 			hp = 5
 			speed = 280
-			damage = 15
+			damage = 20
 			knockback_amount = 200
 			attack_size = 1.0 * (1 + oz)
 	
@@ -51,7 +51,7 @@ func _on_Timer_timeout():
 	queue_free();
 
 func _on_Spear_body_entered(body):
-	if body.name != "Player" && body.name != "Tornado":
+	if body.name != "Player" && body.name != "Axe" && body.name != "Dagger":
 		body.hp -= damage;
 		body.dmg.emitting = true;
 		body.knockback = angle * knockback_amount;

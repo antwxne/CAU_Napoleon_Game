@@ -21,31 +21,31 @@ func _ready():
 	if target.x == 0 && target.y == 0:
 		target.x = -1;
 	angle = target;
-	$TornadoSprite.rotation = angle.angle();
+	$AxeSprite.rotation = angle.angle();
 	rota = angle.angle();
 	match level:
 		1:
 			hp = 9999
 			speed = 375
-			damage = 3
+			damage = 5
 			knockback_amount = 125
 			attack_size = 1.0 * (1 + oz)
 		2:
 			hp = 9999
 			speed = 400
-			damage = 5
+			damage = 7
 			knockback_amount = 150
 			attack_size = 1.0 * (1 + oz)
 		3:
 			hp = 9999
 			speed = 425
-			damage = 10
+			damage = 13
 			knockback_amount = 160
 			attack_size = 1.0 * (1 + oz)
 		4:
 			hp = 9999
 			speed = 450
-			damage = 15
+			damage = 17
 			knockback_amount = 170
 			attack_size = 1.0 * (1 + oz)
 	
@@ -57,14 +57,14 @@ func _physics_process(delta):
 	rota += 0.25;
 	if int(rota) > 360:
 		rota = 0;
-	$TornadoSprite.rotation = int(rota);
+	$AxeSprite.rotation = int(rota);
 	position += angle*speed*delta;
 
 func _on_Timer_timeout():
 	queue_free();
 
-func _on_Tornado_body_entered(body):
-	if body.name != "Player":
+func _on_Axe_body_entered(body):
+	if body.name != "Player" && body.name != "Spear" && body.name != "Dagger":
 		body.hp -= damage;
 		body.dmg.emitting = true;
 		damage =  5;

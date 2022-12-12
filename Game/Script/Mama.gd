@@ -18,30 +18,30 @@ func _ready():
 	target.x = rng.randi_range(-1, 1);
 	target.y = rng.randi_range(-1, 1);
 	angle = target;
-	$MamaSprite.rotation = angle.angle();
+	$DaggerSprite.rotation = angle.angle();
 	match level:
 		1:
 			hp = 1
 			speed = 300
-			damage = 1
+			damage = 3
 			knockback_amount = 50
 			attack_size = 1.0 * (1 + oz)
 		2:
 			hp = 1
 			speed = 320
-			damage = 2
+			damage = 5
 			knockback_amount = 65
 			attack_size = 1.0 * (1 + oz)
 		3:
 			hp = 1
 			speed = 340
-			damage = 3
+			damage = 7
 			knockback_amount = 75
 			attack_size = 1.0 * (1 + oz)
 		4:
 			hp = 1
 			speed = 350
-			damage = 4
+			damage = 10
 			knockback_amount = 80
 			attack_size = 1.0 * (1 + oz)
 	
@@ -58,8 +58,8 @@ func _physics_process(delta):
 func _on_Timer_timeout():
 	queue_free();
 
-func _on_Mama_body_entered(body):
-	if body.name != "Player" && body.name != "Tornado":
+func _on_Dagger_body_entered(body):
+	if body.name != "Player" && body.name != "Spear" && body.name != "Axe":
 		body.hp -= damage;
 		body.dmg.emitting = true;
 		damage =  5;

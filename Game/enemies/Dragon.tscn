@@ -50,7 +50,7 @@ position = Vector2( 33.5, 20.5 )
 scale = Vector2( 1.69792, 1.64062 )
 frames = SubResource( 5 )
 animation = "walk"
-frame = 1
+frame = 2
 playing = true
 
 [node name="Damage" type="CPUParticles2D" parent="AnimatedSprite"]
@@ -81,6 +81,7 @@ visible = false
 light_mask = 0
 collision_layer = 2
 collision_mask = 2
+damage = 3
 
 [node name="CollisionShape2D" parent="hitbox" index="0"]
 position = Vector2( 33, 28 )

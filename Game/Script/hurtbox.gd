@@ -23,9 +23,6 @@ func _on_hurtbox_area_entered(area):
 				1: #HitOnce
 					if hit_once_array.has(area) == false:
 						hit_once_array.append(area)
-						#if area.has_signal("remove_from_array"):
-						#	if not area.is_connected("remove_from_array",Callable(self,"remove_from_list")):
-						#		area.connect("remove_from_array",Callable(self,"remove_from_list"))
 				2: #DisableHurtBox
 					if area.has_method("tempdisable"):
 						area.tempdisable()

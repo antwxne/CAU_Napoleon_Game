@@ -42,7 +42,7 @@ script = ExtResource( 5 )
 position = Vector2( 325, 190 )
 
 [node name="AnimatedSprite" parent="Player" index="1"]
-frame = 3
+frame = 0
 
 [node name="detectEnemies" parent="Player" index="4"]
 visible = true
@@ -127,10 +127,10 @@ position = Vector2( 1072, 923 )
 position = Vector2( -250, -107 )
 
 [connection signal="gold" from="Player" to="Camera/hud" method="_on_Player_gold"]
+[connection signal="hp" from="Player" to="Camera/hud" method="_on_Player_hp"]
 [connection signal="level" from="Player" to="Camera/hud/CanvasLayer/CanvasLayer/levelUp" method="_on_Player_level"]
 [connection signal="weapons" from="Player" to="Camera/hud" method="_on_Player_weapons"]
 [connection signal="xp" from="Player" to="Camera/hud" method="_on_Player_xp"]
-[connection signal="hurt" from="Player/hurtbox" to="Camera/hud" method="_on_hurtbox_hurt"]
 [connection signal="axeLvlUp" from="Camera/hud/CanvasLayer/CanvasLayer/levelUp" to="Player" method="_on_levelUp_axeLvlUp"]
 [connection signal="daggerLvlUp" from="Camera/hud/CanvasLayer/CanvasLayer/levelUp" to="Player" method="_on_levelUp_daggerLvlUp"]
 [connection signal="spearLvlUp" from="Camera/hud/CanvasLayer/CanvasLayer/levelUp" to="Player" method="_on_levelUp_spearLvlUp"]
