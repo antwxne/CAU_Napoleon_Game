@@ -160,8 +160,6 @@ radius = 4075.47
 
 [node name="Player" type="KinematicBody2D" groups=["player"]]
 script = ExtResource( 3 )
-speed = null
-velocity = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -172,7 +170,7 @@ shape = SubResource( 27 )
 position = Vector2( 1, -10 )
 frames = SubResource( 28 )
 animation = "idle"
-frame = 2
+frame = 1
 playing = true
 
 [node name="Damage" type="CPUParticles2D" parent="AnimatedSprite"]

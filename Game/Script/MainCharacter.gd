@@ -111,6 +111,7 @@ func _on_hurtbox_hurt(damage, _angle, _knockback):
 	health -= clamp(damage - armor, 1.0, 999.0);
 	$AnimatedSprite/Damage.emitting = true;
 	emit_signal("hp", health);
+
 	if health <= 0:
 		death()
 
@@ -120,6 +121,7 @@ func death():
 func on_xp(value):
 	emit_signal("xp", value);
 	xp += value;
+
 	if xp >= max_xp:
 		xp -= max_xp;
 		max_xp += 20;
@@ -137,8 +139,10 @@ func _on_detectEnemies_body_entered(body):
 func find_closest_node_to_point(array, point):
 	var closest_node = null
 	var closest_node_distance = 0.0
+
 	for i in array:
 		var current_node_distance = point.distance_to(i.global_position)
+
 		if closest_node == null or current_node_distance < closest_node_distance:
 			closest_node = i
 			closest_node_distance = current_node_distance
@@ -152,12 +156,14 @@ func _on_spearAttackTimer_timeout():
 	if spearAmmo > 0:
 		var spearAttack = spear.instance();
 		spearAttack.position = Vector2();
+
 		if enemyClose.size() == 0:
 			return;
 		spearAttack.target = find_closest_node_to_point(enemyClose, global_position);
 		spearAttack.level = spearLevel;
 		add_child(spearAttack);
 		spearAmmo -= 1;
+
 		if spearAmmo > 0:
 			spearAttackTimer.start();
 		else:
@@ -169,25 +175,29 @@ func _on_detectEnemies_body_exited(body):
 		if i == body:
 			enemyClose.pop_at(j);
 			return;
-		j+=1;
+		j += 1;
 
 func _on_axeTimer_timeout():
 	axeAmmo += axeBaseAmmo;
 	axeAttackTimer.start();
 
-
 func _on_axeAttackTimer_timeout():
 	if axeAmmo > 0:
 		var axeAttack = axe.instance();
 		axeAttack.position = Vector2();
-		if enemyClose.size() == 0:
+
+		if enemyClose.size() == 0: 
 			return;
 		axeAttack.target = find_closest_node_to_point(enemyClose, global_position);
 		axeAttack.base_pos = global_position;
 		axeAttack.level = axeLevel;
 		add_child(axeAttack);
 		axeAmmo -= 1;
-		axeAmmo > 0 ? axeAttackTimer.start() : axeAttackTimer.stop();
+		
+		if axeAmmo > 0:
+			axeAttackTimer.start();
+		else:
+			axeAttackTimer.stop();
 
 func _check_level():
 	if spearLevel > 0:
@@ -206,12 +216,14 @@ func _on_daggerAttackTimer_timeout():
 	if daggerAmmo > 0:
 		var daggerAttack = dagger.instance();
 		daggerAttack.position = Vector2();
+
 		if enemyClose.size() == 0:
 			return;
 		daggerAttack.target = find_closest_node_to_point(enemyClose, global_position);
 		daggerAttack.level = daggerLevel;
 		add_child(daggerAttack);
 		daggerAmmo -= 1;
+
 		if daggerAmmo > 0:
 			daggerAttackTimer.start();
 		else:
