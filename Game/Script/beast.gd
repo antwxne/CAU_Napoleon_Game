@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 export var movement_speed = 95.0
-export var hp = 40
+export var hp = 20
 export var knockback_recovery = 3.5
 export var experience = 15
 var knockback = Vector2.ZERO

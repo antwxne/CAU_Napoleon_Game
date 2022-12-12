@@ -1,6 +1,6 @@
 extends Node
 
-const MAX_ENEMIES: int = 5
+const MAX_ENEMIES: int = 3
 
 onready var _spawners_location: Array = []
 const _enemy_array: Array = [preload("res://enemies/beast.tscn"),
@@ -16,14 +16,11 @@ onready var main_scene = get_tree().get_root();
 onready var spawn_timer = get_node("Timers/spawn_timer");
 onready var frequency_timer = get_node("Timers/frequency_timer");
 
-
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	for child in self.get_children():
 		if child is Position2D:
 			_spawners_location.push_back(child)
-
 
 # Retirer le spawn timer.stop et .start si on veut que les ennemis spawn a plusieurs endroit à la fois
 func spawn_enemy(enemy_node_array: Array) -> void:
@@ -33,9 +30,6 @@ func spawn_enemy(enemy_node_array: Array) -> void:
 		main_scene.add_child(enemy_node)
 		yield(frequency_timer, "timeout")
 	spawn_timer.start()
-
-
-
 
 func spawn_random_enemy_on_random_spawner() -> void:
 	var spawner_position: Position2D = _spawners_location[randi() % _spawners_location.size()];

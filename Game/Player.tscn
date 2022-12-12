@@ -156,7 +156,7 @@ animations = [ {
 radius = 25.0
 
 [sub_resource type="CircleShape2D" id=32]
-radius = 2948.1
+radius = 4075.47
 
 [node name="Player" type="KinematicBody2D" groups=["player"]]
 script = ExtResource( 3 )

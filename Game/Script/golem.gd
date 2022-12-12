@@ -1,9 +1,9 @@
 extends KinematicBody2D
 
 export var movement_speed = 80.0
-export var hp = 30
+export var hp = 15
 export var knockback_recovery = 3.5
-export var experience = 15
+export var experience = 10
 var knockback = Vector2.ZERO
 
 onready var dmg = $AnimatedSprite/Damage
