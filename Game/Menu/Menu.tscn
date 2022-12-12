@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Script/Menu.gd" type="Script" id=1]
 [ext_resource path="res://Font/Roboto-Black.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://Sprite/chinese-coin.png" type="Texture" id=3]
 [ext_resource path="res://Hud/fpsDisplay.tscn" type="PackedScene" id=4]
+[ext_resource path="res://a-hero-of-the-80s-126684.mp3" type="AudioStream" id=5]
 
 [sub_resource type="DynamicFont" id=2]
 size = 20
@@ -113,6 +114,10 @@ size_flags_horizontal = 10
 text = "2 mins"
 items = [ "2 mins", null, false, 0, null, "5 mins", null, false, 1, null, "10 mins", null, false, 2, null ]
 selected = 0
+
+[node name="audio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+autoplay = true
 
 [connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_Play_pressed"]
 [connection signal="pressed" from="VBoxContainer/Player Stats" to="." method="_on_Player_Stats_pressed"]

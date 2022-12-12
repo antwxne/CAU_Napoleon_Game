@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Sprite/chinese-coin.png" type="Texture" id=1]
 [ext_resource path="res://Font/Roboto-Black.ttf" type="DynamicFontData" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Sprite/PngItem_2391122.png" type="Texture" id=5]
 [ext_resource path="res://Script/Pause.gd" type="Script" id=6]
 [ext_resource path="res://Sprite/Line1.png" type="Texture" id=7]
+[ext_resource path="res://mixkit-medieval-show-fanfare-announcement-226.wav" type="AudioStream" id=8]
 
 [sub_resource type="StyleBoxFlat" id=5]
 bg_color = Color( 0.117647, 0.337255, 0.152941, 1 )
@@ -259,6 +260,9 @@ scale_amount = 3.0
 color_ramp = SubResource( 4 )
 hue_variation = 1.0
 hue_variation_random = 1.0
+
+[node name="lvlUPMusique" type="AudioStreamPlayer" parent="CanvasLayer/CanvasLayer/levelUp"]
+stream = ExtResource( 8 )
 
 [node name="Pause" type="CanvasLayer" parent="CanvasLayer"]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Script/Camera.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Script/Main.gd" type="Script" id=5]
 [ext_resource path="res://enemies/Slime.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Hud/hud.tscn" type="PackedScene" id=7]
+[ext_resource path="res://hindrance-124376.mp3" type="AudioStream" id=8]
 [ext_resource path="res://enemies/Enemies_spawner.tscn" type="PackedScene" id=14]
 
 [sub_resource type="TileSet" id=1]
@@ -40,9 +41,6 @@ script = ExtResource( 5 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 325, 190 )
-
-[node name="AnimatedSprite" parent="Player" index="1"]
-frame = 0
 
 [node name="detectEnemies" parent="Player" index="4"]
 visible = true
@@ -125,6 +123,10 @@ position = Vector2( 1072, 923 )
 
 [node name="Spawner4" type="Position2D" parent="Enemies_spawners"]
 position = Vector2( -250, -107 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+autoplay = true
 
 [connection signal="gold" from="Player" to="Camera/hud" method="_on_Player_gold"]
 [connection signal="hp" from="Player" to="Camera/hud" method="_on_Player_hp"]

@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Font/Roboto-Black.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Script/Victory.gd" type="Script" id=2]
 [ext_resource path="res://Hud/fpsDisplay.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Sprite/Line1.png" type="Texture" id=4]
+[ext_resource path="res://mixkit-game-level-completed-2059.wav" type="AudioStream" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 size = 50
@@ -116,6 +117,10 @@ scale_amount = 3.0
 color_ramp = SubResource( 2 )
 hue_variation = 1.0
 hue_variation_random = 1.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+autoplay = true
 
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="Button2" to="." method="_on_Button2_pressed"]

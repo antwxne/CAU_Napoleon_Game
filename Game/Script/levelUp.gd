@@ -18,6 +18,7 @@ func _on_Player_level(value):
 	$GridContainer2/Spear.text = "Spear level: " + str(spearLvl);
 	$GridContainer2/Axe.text = "Axe level: " + str(axeLvl);
 	$GridContainer2/mama.text = "Dagger level: " + str(daggerLvl);
+	$lvlUPMusique.play()
 
 func _on_UpgradeSpear_pressed():
 	get_tree().paused = false;
