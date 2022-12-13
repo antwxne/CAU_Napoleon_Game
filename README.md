@@ -20,6 +20,10 @@ This game is inspired by [Vampire Suvivors](https://store.steampowered.com/app/1
     <img src=".resources\game_description.png">
 </p>
 
+## Build
+
+You can build the game within godot or use the prebuilt binaries provided with the release.
+
 ## Contributors
 
 - Clément Ruat [![github-link][github-logo]](https://github.com/fantoruse)
