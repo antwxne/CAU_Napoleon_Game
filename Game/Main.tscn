@@ -99,16 +99,16 @@ margin_bottom = 57.0
 [node name="Node" type="Node" parent="."]
 
 [node name="Slime5" parent="." instance=ExtResource( 6 )]
-position = Vector2( 386, 669 )
+position = Vector2( 392, 625 )
 
 [node name="Slime4" parent="." instance=ExtResource( 6 )]
-position = Vector2( 1153, 485 )
+position = Vector2( 1062, 427 )
 
 [node name="Slime3" parent="." instance=ExtResource( 6 )]
 position = Vector2( 297, -101 )
 
 [node name="Slime2" parent="." instance=ExtResource( 6 )]
-position = Vector2( 1191, 198 )
+position = Vector2( 1074, 190 )
 
 [node name="Slime" parent="." instance=ExtResource( 6 )]
 position = Vector2( -44, 191 )
@@ -116,16 +116,16 @@ position = Vector2( -44, 191 )
 [node name="Enemies_spawners" parent="." instance=ExtResource( 14 )]
 
 [node name="Spawner" type="Position2D" parent="Enemies_spawners"]
-position = Vector2( -122, 943 )
+position = Vector2( -19, 667 )
 
 [node name="Spawner2" type="Position2D" parent="Enemies_spawners"]
-position = Vector2( 1519, 32 )
+position = Vector2( 1076, -6 )
 
 [node name="Spawner3" type="Position2D" parent="Enemies_spawners"]
-position = Vector2( 1072, 923 )
+position = Vector2( 970, 642 )
 
 [node name="Spawner4" type="Position2D" parent="Enemies_spawners"]
-position = Vector2( -250, -107 )
+position = Vector2( -76, -45 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
