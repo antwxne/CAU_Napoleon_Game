@@ -1,8 +1,8 @@
-extends KinematicBody2D
+extends CharacterBody2D
 
-export var xp = 1;
-onready var player = get_tree().get_nodes_in_group("player")[0];
-export var movement_speed = 142.0;
+@export var xp = 1;
+@onready var player = get_tree().get_nodes_in_group("player")[0];
+@export var movement_speed = 142.0;
 var no_move = true;
 
 func _ready():
@@ -18,8 +18,9 @@ func _ready():
 func _process(_delta):
 	if !no_move && !str(player)=="[Deleted Object]":
 		var direction = global_position.direction_to(player.global_position);
-		var velocity = direction*movement_speed;
-		move_and_slide(velocity);
+		var local_velocity = direction*movement_speed;
+		set_velocity(local_velocity)
+		move_and_slide();
 		
 		if direction.x > 0.1:
 			$sprite_xp.flip_h = true;

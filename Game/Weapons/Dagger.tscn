@@ -1,11 +1,11 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://Sprite/dagger.png" type="Texture" id=1]
+[ext_resource path="res://Sprite/dagger.png" type="Texture2D" id=1]
 [ext_resource path="res://Script/Mama.gd" type="Script" id=2]
-[ext_resource path="res://Sprite/floaty_64.png" type="Texture" id=3]
+[ext_resource path="res://Sprite/floaty_64.png" type="Texture2D" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 15, 15.5 )
+size = Vector2( 15, 15.5 )
 
 [sub_resource type="CanvasItemMaterial" id=2]
 blend_mode = 1
@@ -15,8 +15,8 @@ particles_anim_v_frames = 7
 particles_anim_loop = false
 
 [sub_resource type="Gradient" id=3]
-offsets = PoolRealArray( 0.0502793, 0.22067, 0.391061, 0.536313, 0.73743, 0.955307 )
-colors = PoolColorArray( 0, 0, 0, 1, 0.601034, 0.110181, 0.601562, 1, 0.450866, 0.147484, 0.574219, 1, 0.722181, 0.205222, 0.847656, 1, 0.932862, 0.338947, 1, 1, 1, 1, 1, 1 )
+offsets = PackedFloat32Array( 0.0502793, 0.22067, 0.391061, 0.536313, 0.73743, 0.955307 )
+colors = PackedColorArray( 0, 0, 0, 1, 0.601034, 0.110181, 0.601562, 1, 0.450866, 0.147484, 0.574219, 1, 0.722181, 0.205222, 0.847656, 1, 0.932862, 0.338947, 1, 1, 1, 1, 1, 1 )
 
 [node name="Dagger" type="Area2D"]
 script = ExtResource( 2 )
@@ -28,7 +28,7 @@ shape = SubResource( 1 )
 
 [node name="Timer" type="Timer" parent="."]
 
-[node name="Particles2D" type="CPUParticles2D" parent="."]
+[node name="GPUParticles2D" type="CPUParticles2D" parent="."]
 material = SubResource( 2 )
 amount = 40
 lifetime = 0.5
@@ -51,7 +51,7 @@ hue_variation = 0.01
 hue_variation_random = 1.0
 anim_speed = 1.0
 
-[node name="DaggerSprite" type="Sprite" parent="."]
+[node name="DaggerSprite" type="Sprite2D" parent="."]
 texture = ExtResource( 1 )
 
 [connection signal="body_entered" from="." to="." method="_on_Dagger_body_entered"]

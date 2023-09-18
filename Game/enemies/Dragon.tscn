@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://Sprite/AdultRedDragon_fly.png" type="Texture" id=1]
+[ext_resource path="res://Sprite/AdultRedDragon_fly.png" type="Texture2D" id=1]
 [ext_resource path="res://Utiles/hurtbox.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Utiles/hitbox.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Script/Dragon.gd" type="Script" id=4]
@@ -42,10 +42,10 @@ radius = 49.0102
 [sub_resource type="CircleShape2D" id=8]
 radius = 52.0096
 
-[node name="Dragon" type="KinematicBody2D"]
+[node name="Dragon" type="CharacterBody2D"]
 script = ExtResource( 4 )
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2( 33.5, 20.5 )
 scale = Vector2( 1.69792, 1.64062 )
 frames = SubResource( 5 )
@@ -53,7 +53,7 @@ animation = "walk"
 frame = 1
 playing = true
 
-[node name="Damage" type="CPUParticles2D" parent="AnimatedSprite"]
+[node name="Damage" type="CPUParticles2D" parent="AnimatedSprite2D"]
 position = Vector2( 0.294479, 12.4952 )
 emitting = false
 amount = 30

@@ -13,13 +13,13 @@ func _ready():
 	$Label.text = "Gold: " + str(Save.gameData.player.gold);
 
 func _on_Play_pressed():
-	return get_tree().change_scene("res://Main.tscn");
+	return get_tree().change_scene_to_file("res://Main.tscn");
 
 func _on_Player_Stats_pressed():
-	return get_tree().change_scene("res://Menu/StatsMenu.tscn");
+	return get_tree().change_scene_to_file("res://Menu/StatsMenu.tscn");
 
 func _on_Settings_pressed():
-	return get_tree().change_scene("res://Menu/SettingsMenu.tscn");
+	return get_tree().change_scene_to_file("res://Menu/SettingsMenu.tscn");
 
 func _on_Exit_pressed():
 	get_tree().quit();
