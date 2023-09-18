@@ -1,24 +1,25 @@
-extends KinematicBody2D
+extends CharacterBody2D
 
-onready var _animated_sprite = $AnimatedSprite
+@onready var _animated_sprite = $AnimatedSprite2D
 
-export (int) var speed = 200
-export var velocity = Vector2();
+@export var speed = 200
+#@export var velocity = Vector2();
 
 # Preaload
 var spear = preload("res://Weapons/Spear.tscn");
+
 var axe = preload("res://Weapons/Axe.tscn")
 var dagger = preload("res://Weapons/Dagger.tscn")
 
 # Attack Timers
-onready var spearTimer = get_node("%spearTimer");
-onready var spearAttackTimer = get_node("%spearAttackTimer");
+@onready var spearTimer = get_node("%spearTimer");
+@onready var spearAttackTimer = get_node("%spearAttackTimer");
 
-onready var axeTimer = get_node("%axeTimer")
-onready var axeAttackTimer = get_node("%axeAttackTimer")
+@onready var axeTimer = get_node("%axeTimer")
+@onready var axeAttackTimer = get_node("%axeAttackTimer")
 
-onready var daggerTimer = get_node("%daggerTimer")
-onready var daggerAttackTimer = get_node("%daggerAttackTimer")
+@onready var daggerTimer = get_node("%daggerTimer")
+@onready var daggerAttackTimer = get_node("%daggerAttackTimer")
 
 # Signals
 signal xp(value);
@@ -28,33 +29,47 @@ signal level(value);
 signal hp(value);
 
 # Player stats
-var attack_speed = Save.gameData.player.attack * 0.1 + 1;
-var armor = Save.gameData.player.armor * 2;
-var health = 40 + Save.gameData.player.health * 10;
-var xp = 0;
+#var attack_speed = Save.gameData.player.attack * 0.1 + 1;
+#var armor = Save.gameData.player.armor * 2;
+#var health = 40 + Save.gameData.player.health * 10;
+var attack_speed;
+var armor;
+var health;
+var current_xp  = 0;
 var max_xp = 30;
-var oz = Save.gameData.player.offense_zone;
-var weapons = [];
+#var oz = Save.gameData.player.offense_zone;
+var oz
+var current_weapons = [];
 
 # Weapons stats
 var spearAmmo = 0;
 var spearBaseAmmo = 1;
-var spearSpeed = 1 / attack_speed;
+#var spearSpeed = 1 / attack_speed;
+var spearSpeed;
 var spearLevel = 1;
 
 var axeAmmo = 0;
 var axeBaseAmmo = 2;
-var axeSpeed = 1.2 / attack_speed;
+var axeSpeed;
 var axeLevel = 0;
 
 var daggerAmmo = 0;
 var daggerBaseAmmo = 1;
-var daggerSpeed = 1.3 / attack_speed;
+var daggerSpeed;
 var daggerLevel = 0;
 
 var enemyClose = [];
 
 func _ready():
+	oz = Save.gameData.player.offense_zone
+	attack_speed = Save.gameData.player.attack * 0.1 + 1;
+	armor = Save.gameData.player.armor * 2;
+	spearSpeed = 1 / attack_speed;
+	axeSpeed = 1.2 / attack_speed;
+
+	health = 40 + Save.gameData.player.health * 10;
+	daggerSpeed = 1.3 / attack_speed;
+
 	attack();
 	_check_level();
 
@@ -105,25 +120,27 @@ func get_input():
 
 func _physics_process(_delta):
 	get_input()
-	velocity = move_and_slide(velocity)
+	set_velocity(velocity)
+	move_and_slide()
+	velocity = velocity
 
 func _on_hurtbox_hurt(damage, _angle, _knockback):
 	health -= clamp(damage - armor, 1.0, 999.0);
-	$AnimatedSprite/Damage.emitting = true;
+	$AnimatedSprite2D/Damage.emitting = true;
 	emit_signal("hp", health);
 
 	if health <= 0:
 		death()
 
 func death():
-	return get_tree().change_scene("res://Menu/Loose.tscn");
+	return get_tree().change_scene_to_file("res://Menu/Loose.tscn");
 
 func on_xp(value):
 	emit_signal("xp", value);
-	xp += value;
+	current_xp  += value;
 
-	if xp >= max_xp:
-		xp -= max_xp;
+	if current_xp >= max_xp:
+		current_xp -= max_xp;
 		max_xp += 20;
 		emit_signal("level", [spearLevel, axeLevel, daggerLevel]);
 
@@ -135,6 +152,8 @@ func on_gold(value):
 func _on_detectEnemies_body_entered(body):
 	if body.name != "Player":
 		enemyClose.push_back(body);
+
+
 
 func find_closest_node_to_point(array, point):
 	var closest_node = null
@@ -154,13 +173,13 @@ func _on_spearTimer_timeout():
 
 func _on_spearAttackTimer_timeout():
 	if spearAmmo > 0:
-		var spearAttack = spear.instance();
+		var spearAttack = spear.instantiate();
 		spearAttack.position = Vector2();
 
 		if enemyClose.size() == 0:
 			return;
-		spearAttack.target = find_closest_node_to_point(enemyClose, global_position);
-		spearAttack.level = spearLevel;
+#"		spearAttack.target = find_closest_node_to_point(enemyClose, global_position);
+		#spearAttack.level = spearLevel;
 		add_child(spearAttack);
 		spearAmmo -= 1;
 
@@ -183,17 +202,17 @@ func _on_axeTimer_timeout():
 
 func _on_axeAttackTimer_timeout():
 	if axeAmmo > 0:
-		var axeAttack = axe.instance();
+		var axeAttack = axe.instantiate();
 		axeAttack.position = Vector2();
 
-		if enemyClose.size() == 0: 
+		if enemyClose.size() == 0:
 			return;
 		axeAttack.target = find_closest_node_to_point(enemyClose, global_position);
 		axeAttack.base_pos = global_position;
 		axeAttack.level = axeLevel;
 		add_child(axeAttack);
 		axeAmmo -= 1;
-		
+
 		if axeAmmo > 0:
 			axeAttackTimer.start();
 		else:
@@ -201,11 +220,11 @@ func _on_axeAttackTimer_timeout():
 
 func _check_level():
 	if spearLevel > 0:
-		weapons.push_back("spear");
+		current_weapons.push_back("spear");
 	if axeLevel > 0:
-		weapons.push_back("axe");
+		current_weapons.push_back("axe");
 	if daggerLevel > 0:
-		weapons.push_back("dagger");
+		current_weapons.push_back("dagger");
 	emit_signal("weapons", weapons);
 
 func _on_daggerTimer_timeout():
@@ -214,7 +233,7 @@ func _on_daggerTimer_timeout():
 
 func _on_daggerAttackTimer_timeout():
 	if daggerAmmo > 0:
-		var daggerAttack = dagger.instance();
+		var daggerAttack = dagger.instantiate();
 		daggerAttack.position = Vector2();
 
 		if enemyClose.size() == 0:
@@ -231,16 +250,16 @@ func _on_daggerAttackTimer_timeout():
 
 func _on_levelUp_spearLvlUp(value):
 	spearLevel = value;
-	spearSpeed -= 0.01; 
+	spearSpeed -= 0.01;
 
 func _on_levelUp_axeLvlUp(value):
 	axeBaseAmmo += 1;
 	axeLevel = value;
-	axeSpeed -= 0.01; 
+	axeSpeed -= 0.01;
 	if axeLevel == 1:
 		attack();
 		_check_level();
-	
+
 func _on_levelUp_daggerLvlUp(value):
 	daggerLevel = value;
 	daggerSpeed -= 0.05;

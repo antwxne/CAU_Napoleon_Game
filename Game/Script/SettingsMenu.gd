@@ -1,17 +1,17 @@
 extends Control
 
-onready var videoMode = $TabContainer/Video/GridContainer/VideoMode
-onready var checkVsync = $TabContainer/Video/GridContainer/CheckVsync
-onready var checkFps = $TabContainer/Video/GridContainer/CheckFps
-onready var sliderFps = $TabContainer/Video/GridContainer/HBoxContainer/SliderFps
+@onready var videoMode = $TabContainer/Video/GridContainer/VideoMode
+@onready var checkVsync = $TabContainer/Video/GridContainer/CheckVsync
+@onready var checkFps = $TabContainer/Video/GridContainer/CheckFps
+@onready var sliderFps = $TabContainer/Video/GridContainer/HBoxContainer/SliderFps
 
-onready var sliderMaster = $TabContainer/Audio/GridContainer/SliderMaster
-onready var sliderMusic = $TabContainer/Audio/GridContainer/SliderMusic
-onready var sliderVfx = $TabContainer/Audio/GridContainer/SliderVFX
+@onready var sliderMaster = $TabContainer/Audio/GridContainer/SliderMaster
+@onready var sliderMusic = $TabContainer/Audio/GridContainer/SliderMusic
+@onready var sliderVfx = $TabContainer/Audio/GridContainer/SliderVFX
 
 var tab = 0;
 var tabsFocus;
-var is_waiting_for_key: bool = false setget set_is_waiting_for_key
+var is_waiting_for_key: bool = false: set = set_is_waiting_for_key
 var action = "";
 
 func _on_Button_pressed():
@@ -34,11 +34,11 @@ func _unhandled_input(event):
 		update_label();
 
 func set_action_key(target_action: String, key: String):
-	for event in InputMap.get_action_list(target_action):
+	for event in InputMap.action_get_events(target_action):
 		if event is InputEventKey:
 			InputMap.action_erase_event(target_action, event);
 	var next_event = InputEventKey.new();
-	next_event.scancode = OS.find_scancode_from_string(key);
+	next_event.keycode = OS.find_keycode_from_string(key);
 	InputMap.action_add_event(target_action, next_event);
 	if target_action == "Up":
 		Save.gameData.input.Up = key;
@@ -56,10 +56,13 @@ func _ready():
 	tabsFocus = [$TabContainer/Video/GridContainer/VideoMode, $TabContainer/Audio/GridContainer/SliderMaster, $TabContainer/Gameplay/GridContainer/Up/ButtonUp]
 
 	self.is_waiting_for_key = false
+	videoMode.add_item("Windowed")
+	videoMode.add_item("Fullscreen")
+
 	videoMode.select(1 if Save.gameData.fullscreen_on else 0);
 	GlobalSettings.togglefullscreen(Save.gameData.fullscreen_on);
-	checkVsync.pressed = Save.gameData.vsync_on;
-	checkFps.pressed = Save.gameData.display_fps;
+	checkVsync.button_pressed = Save.gameData.vsync_on;
+	checkFps.button_pressed = Save.gameData.display_fps;
 	sliderFps.value = Save.gameData.max_fps;
 	
 	sliderMaster.value = Save.gameData.master_vol;
@@ -75,7 +78,7 @@ func _process(_delta):
 		tabsFocus[tab].grab_focus();
 
 func _on_Return_pressed():
-	return get_tree().change_scene("res://Menu/Menu.tscn");
+	return get_tree().change_scene_to_file("res://Menu/Menu.tscn");
 
 func _on_VideoMode_item_selected(index):
 	GlobalSettings.togglefullscreen(true if index == 1 else false);

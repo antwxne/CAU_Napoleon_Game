@@ -1,10 +1,10 @@
 extends Area2D
 
 enum hurtbox {Cooldown,HitOnce,DisableHurtBox}
-export(hurtbox) var HurtBoxType = hurtbox.Cooldown
+@export var HurtBoxType: hurtbox = hurtbox.Cooldown
 
-onready var collision = $CollisionShape2D
-onready var disableTimer = $Timer
+@onready var collision = $CollisionShape2D
+@onready var disableTimer = $Timer
 signal hurt(damage, angle, knockback)
 var hit_once_array = []
 

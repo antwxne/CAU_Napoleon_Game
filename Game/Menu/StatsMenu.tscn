@@ -1,11 +1,11 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Script/PlayerStats.gd" type="Script" id=1]
-[ext_resource path="res://Font/Roboto-Black.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://Sprite/chinese-coin.png" type="Texture" id=3]
+[ext_resource path="res://Font/Roboto-Black.ttf" type="FontFile" id=2]
+[ext_resource path="res://Sprite/chinese-coin.png" type="Texture2D" id=3]
 [ext_resource path="res://Hud/fpsDisplay.tscn" type="PackedScene" id=4]
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="FontFile" id=1]
 size = 25
 font_data = ExtResource( 2 )
 
@@ -22,20 +22,20 @@ color = Color( 0.172549, 0.0352941, 0.0352941, 1 )
 [node name="Control" parent="." instance=ExtResource( 4 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 1024.0
-margin_bottom = 600.0
+offset_right = 1024.0
+offset_bottom = 600.0
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="."]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -226.0
-margin_right = 226.0
-margin_bottom = 159.0
+offset_left = -226.0
+offset_right = 226.0
+offset_bottom = 159.0
 
 [node name="Title" type="Label" parent="VBoxContainer2"]
-margin_right = 452.0
-margin_bottom = 201.0
-custom_fonts/font = SubResource( 1 )
+offset_right = 452.0
+offset_bottom = 201.0
+theme_override_fonts/font = SubResource( 1 )
 text = "
 
 Player Stats
@@ -50,83 +50,83 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.908
 anchor_bottom = 0.5
-margin_left = -142.0
-margin_top = -137.0
-margin_right = 142.0
-margin_bottom = 225.0
+offset_left = -142.0
+offset_top = -137.0
+offset_right = 142.0
+offset_bottom = 225.0
 grow_horizontal = 2
-custom_constants/vseparation = 39
+theme_override_constants/v_separation = 39
 columns = 2
 
 [node name="Attack" type="Label" parent="GridContainer2"]
-margin_top = 3.0
-margin_right = 136.0
-margin_bottom = 17.0
+offset_top = 3.0
+offset_right = 136.0
+offset_bottom = 17.0
 text = "Attack Speed level: 0"
 
 [node name="UpgradeAttack" type="Button" parent="GridContainer2"]
-margin_left = 140.0
-margin_right = 277.0
-margin_bottom = 20.0
-focus_neighbour_top = NodePath("../Return")
+offset_left = 140.0
+offset_right = 277.0
+offset_bottom = 20.0
+focus_neighbor_top = NodePath("../Return")
 text = "Upgrade for 10 gold"
 
 [node name="Health" type="Label" parent="GridContainer2"]
-margin_top = 62.0
-margin_right = 136.0
-margin_bottom = 76.0
+offset_top = 62.0
+offset_right = 136.0
+offset_bottom = 76.0
 text = "Health level: 0"
 
 [node name="UpgradeHealth" type="Button" parent="GridContainer2"]
-margin_left = 140.0
-margin_top = 59.0
-margin_right = 277.0
-margin_bottom = 79.0
+offset_left = 140.0
+offset_top = 59.0
+offset_right = 277.0
+offset_bottom = 79.0
 text = "Upgrade for 10 gold"
 
 [node name="OffenseZone" type="Label" parent="GridContainer2"]
-margin_top = 121.0
-margin_right = 136.0
-margin_bottom = 135.0
+offset_top = 121.0
+offset_right = 136.0
+offset_bottom = 135.0
 text = "Offense zone level: 0"
 
 [node name="UpgradeOffenseZone" type="Button" parent="GridContainer2"]
-margin_left = 140.0
-margin_top = 118.0
-margin_right = 277.0
-margin_bottom = 138.0
+offset_left = 140.0
+offset_top = 118.0
+offset_right = 277.0
+offset_bottom = 138.0
 text = "Upgrade for 10 gold"
 
 [node name="Armor" type="Label" parent="GridContainer2"]
-margin_top = 180.0
-margin_right = 136.0
-margin_bottom = 194.0
+offset_top = 180.0
+offset_right = 136.0
+offset_bottom = 194.0
 text = "Armor level: 0"
 
 [node name="UpgradeArmor" type="Button" parent="GridContainer2"]
-margin_left = 140.0
-margin_top = 177.0
-margin_right = 277.0
-margin_bottom = 197.0
+offset_left = 140.0
+offset_top = 177.0
+offset_right = 277.0
+offset_bottom = 197.0
 text = "Upgrade for 10 gold"
 
 [node name="Gold" type="Label" parent="GridContainer2"]
-margin_top = 239.0
-margin_right = 136.0
-margin_bottom = 253.0
+offset_top = 239.0
+offset_right = 136.0
+offset_bottom = 253.0
 text = "You got 0 gold"
 
-[node name="Chinese-coin" type="Sprite" parent="GridContainer2"]
+[node name="Chinese-coin" type="Sprite2D" parent="GridContainer2"]
 position = Vector2( 115, 246 )
 scale = Vector2( 0.0332031, 0.0390625 )
 texture = ExtResource( 3 )
 
 [node name="Return" type="Button" parent="GridContainer2"]
-margin_left = 140.0
-margin_top = 236.0
-margin_right = 277.0
-margin_bottom = 256.0
-focus_neighbour_bottom = NodePath("../UpgradeAttack")
+offset_left = 140.0
+offset_top = 236.0
+offset_right = 277.0
+offset_bottom = 256.0
+focus_neighbor_bottom = NodePath("../UpgradeAttack")
 text = "Return to menu"
 
 [connection signal="pressed" from="GridContainer2/UpgradeAttack" to="." method="_on_UpgradeAttack_pressed"]

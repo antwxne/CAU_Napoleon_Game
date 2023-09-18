@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/mixkit-game-level-completed-2059.wav-81e50394439523c0d943ec3bc94add07.sample"
+type="AudioStreamWAV"
+uid="uid://d3ycmvjx6to65"
+path="res://.godot/imported/mixkit-game-level-completed-2059.wav-81e50394439523c0d943ec3bc94add07.sample"
 
 [deps]
 
 source_file="res://mixkit-game-level-completed-2059.wav"
-dest_files=[ "res://.import/mixkit-game-level-completed-2059.wav-81e50394439523c0d943ec3bc94add07.sample" ]
+dest_files=["res://.godot/imported/mixkit-game-level-completed-2059.wav-81e50394439523c0d943ec3bc94add07.sample"]
 
 [params]
 

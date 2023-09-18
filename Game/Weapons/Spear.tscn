@@ -1,11 +1,11 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Sprite/Spear.png" type="Texture" id=1]
+[ext_resource path="res://Sprite/Spear.png" type="Texture2D" id=1]
 [ext_resource path="res://Script/Spear.gd" type="Script" id=2]
 [ext_resource path="res://mixkit-player-jumping-in-a-video-game-2043.wav" type="AudioStream" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 26, 5 )
+size = Vector2( 26, 5 )
 
 [node name="Spear" type="Area2D" groups=["attack"]]
 light_mask = 4
@@ -13,7 +13,7 @@ collision_layer = 5
 collision_mask = 5
 script = ExtResource( 2 )
 
-[node name="SpearSprite" type="Sprite" parent="."]
+[node name="SpearSprite" type="Sprite2D" parent="."]
 position = Vector2( 21, 5 )
 texture = ExtResource( 1 )
 

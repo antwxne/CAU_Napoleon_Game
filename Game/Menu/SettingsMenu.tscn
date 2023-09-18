@@ -18,19 +18,19 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -373.5
-margin_top = -213.5
-margin_right = 373.5
-margin_bottom = 213.5
+offset_left = -373.5
+offset_top = -213.5
+offset_right = 373.5
+offset_bottom = 213.5
 focus_mode = 2
 
-[node name="Video" type="Tabs" parent="TabContainer"]
+[node name="Video" type="TabBar" parent="TabContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 4.0
-margin_top = 32.0
-margin_right = -4.0
-margin_bottom = -4.0
+offset_left = 4.0
+offset_top = 32.0
+offset_right = -4.0
+offset_bottom = -4.0
 focus_mode = 2
 
 [node name="GridContainer" type="GridContainer" parent="TabContainer/Video"]
@@ -38,100 +38,100 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -136.0
-margin_top = -181.0
-margin_right = 136.0
-margin_bottom = 181.0
-custom_constants/vseparation = 39
+offset_left = -136.0
+offset_top = -181.0
+offset_right = 136.0
+offset_bottom = 181.0
+theme_override_constants/v_separation = 39
 columns = 2
 
 [node name="VideoModeLabel" type="Label" parent="TabContainer/Video/GridContainer"]
-margin_top = 3.0
-margin_right = 112.0
-margin_bottom = 17.0
+offset_top = 3.0
+offset_right = 112.0
+offset_bottom = 17.0
 text = "Video Mode"
 
 [node name="VideoMode" type="OptionButton" parent="TabContainer/Video/GridContainer"]
-margin_left = 126.0
-margin_right = 276.0
-margin_bottom = 20.0
-rect_min_size = Vector2( 150, 20 )
-focus_neighbour_top = NodePath("../Return")
+offset_left = 126.0
+offset_right = 276.0
+offset_bottom = 20.0
+custom_minimum_size = Vector2( 150, 20 )
+focus_neighbor_top = NodePath("../Return")
 size_flags_horizontal = 10
 text = "Windowed"
 items = [ "Windowed", null, false, 0, null, "Fullscreen", null, false, 1, null ]
 selected = 0
 
 [node name="Label" type="Label" parent="TabContainer/Video/GridContainer"]
-margin_top = 72.0
-margin_right = 112.0
-margin_bottom = 86.0
+offset_top = 72.0
+offset_right = 112.0
+offset_bottom = 86.0
 text = "Vsync"
 
 [node name="CheckVsync" type="CheckButton" parent="TabContainer/Video/GridContainer"]
-margin_left = 200.0
-margin_top = 59.0
-margin_right = 276.0
-margin_bottom = 99.0
+offset_left = 200.0
+offset_top = 59.0
+offset_right = 276.0
+offset_bottom = 99.0
 size_flags_horizontal = 10
 
 [node name="Label2" type="Label" parent="TabContainer/Video/GridContainer"]
-margin_top = 151.0
-margin_right = 112.0
-margin_bottom = 165.0
+offset_top = 151.0
+offset_right = 112.0
+offset_bottom = 165.0
 text = "Display Fps"
 
 [node name="CheckFps" type="CheckButton" parent="TabContainer/Video/GridContainer"]
-margin_left = 200.0
-margin_top = 138.0
-margin_right = 276.0
-margin_bottom = 178.0
+offset_left = 200.0
+offset_top = 138.0
+offset_right = 276.0
+offset_bottom = 178.0
 size_flags_horizontal = 10
 
 [node name="Label3" type="Label" parent="TabContainer/Video/GridContainer"]
-margin_top = 218.0
-margin_right = 112.0
-margin_bottom = 232.0
+offset_top = 218.0
+offset_right = 112.0
+offset_bottom = 232.0
 text = "Max Fps"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Video/GridContainer"]
-margin_left = 116.0
-margin_top = 217.0
-margin_right = 276.0
-margin_bottom = 233.0
+offset_left = 116.0
+offset_top = 217.0
+offset_right = 276.0
+offset_bottom = 233.0
 
 [node name="Label" type="Label" parent="TabContainer/Video/GridContainer/HBoxContainer"]
-margin_top = 1.0
-margin_right = 26.0
-margin_bottom = 15.0
+offset_top = 1.0
+offset_right = 26.0
+offset_bottom = 15.0
 size_flags_horizontal = 10
 text = "Max"
 
 [node name="SliderFps" type="HSlider" parent="TabContainer/Video/GridContainer/HBoxContainer"]
-margin_left = 30.0
-margin_right = 160.0
-margin_bottom = 16.0
-rect_min_size = Vector2( 130, 0 )
+offset_left = 30.0
+offset_right = 160.0
+offset_bottom = 16.0
+custom_minimum_size = Vector2( 130, 0 )
 size_flags_horizontal = 9
 min_value = 30.0
 max_value = 400.0
 value = 60.0
 
 [node name="Return" type="Button" parent="TabContainer/Video/GridContainer"]
-margin_top = 272.0
-margin_right = 112.0
-margin_bottom = 292.0
-focus_neighbour_bottom = NodePath("../VideoMode")
+offset_top = 272.0
+offset_right = 112.0
+offset_bottom = 292.0
+focus_neighbor_bottom = NodePath("../VideoMode")
 text = "Return to menu"
 
-[node name="Audio" type="Tabs" parent="TabContainer"]
+[node name="Audio" type="TabBar" parent="TabContainer"]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 4.0
-margin_top = 32.0
-margin_right = -4.0
-margin_bottom = -4.0
+offset_left = 4.0
+offset_top = 32.0
+offset_right = -4.0
+offset_bottom = -4.0
 focus_mode = 2
 
 [node name="GridContainer" type="GridContainer" parent="TabContainer/Audio"]
@@ -139,82 +139,82 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -136.0
-margin_top = -181.0
-margin_right = 136.0
-margin_bottom = 181.0
-custom_constants/vseparation = 39
+offset_left = -136.0
+offset_top = -181.0
+offset_right = 136.0
+offset_bottom = 181.0
+theme_override_constants/v_separation = 39
 columns = 2
 
 [node name="Label4" type="Label" parent="TabContainer/Audio/GridContainer"]
-margin_top = 1.0
-margin_right = 97.0
-margin_bottom = 15.0
+offset_top = 1.0
+offset_right = 97.0
+offset_bottom = 15.0
 size_flags_horizontal = 0
 text = "Master Volume"
 
 [node name="SliderMaster" type="HSlider" parent="TabContainer/Audio/GridContainer"]
-margin_left = 116.0
-margin_right = 246.0
-margin_bottom = 16.0
-rect_min_size = Vector2( 130, 0 )
-focus_neighbour_top = NodePath("../Return")
+offset_left = 116.0
+offset_right = 246.0
+offset_bottom = 16.0
+custom_minimum_size = Vector2( 130, 0 )
+focus_neighbor_top = NodePath("../Return")
 size_flags_horizontal = 9
 min_value = -50.0
 max_value = 0.0
 value = -10.0
 
 [node name="Label5" type="Label" parent="TabContainer/Audio/GridContainer"]
-margin_top = 56.0
-margin_right = 91.0
-margin_bottom = 70.0
+offset_top = 56.0
+offset_right = 91.0
+offset_bottom = 70.0
 size_flags_horizontal = 0
 text = "Music Volume"
 
 [node name="SliderMusic" type="HSlider" parent="TabContainer/Audio/GridContainer"]
-margin_left = 116.0
-margin_top = 55.0
-margin_right = 246.0
-margin_bottom = 71.0
-rect_min_size = Vector2( 130, 0 )
+offset_left = 116.0
+offset_top = 55.0
+offset_right = 246.0
+offset_bottom = 71.0
+custom_minimum_size = Vector2( 130, 0 )
 size_flags_horizontal = 9
 min_value = -50.0
 max_value = 0.0
 value = -10.0
 
 [node name="Label6" type="Label" parent="TabContainer/Audio/GridContainer"]
-margin_top = 111.0
-margin_right = 75.0
-margin_bottom = 125.0
+offset_top = 111.0
+offset_right = 75.0
+offset_bottom = 125.0
 size_flags_horizontal = 0
 text = "SFX Volume"
 
 [node name="SliderVFX" type="HSlider" parent="TabContainer/Audio/GridContainer"]
-margin_left = 116.0
-margin_top = 110.0
-margin_right = 246.0
-margin_bottom = 126.0
-rect_min_size = Vector2( 130, 0 )
+offset_left = 116.0
+offset_top = 110.0
+offset_right = 246.0
+offset_bottom = 126.0
+custom_minimum_size = Vector2( 130, 0 )
 size_flags_horizontal = 9
 min_value = -50.0
 max_value = 0.0
 value = -10.0
 
 [node name="Return" type="Button" parent="TabContainer/Audio/GridContainer"]
-margin_top = 165.0
-margin_right = 112.0
-margin_bottom = 185.0
-focus_neighbour_bottom = NodePath("../SliderMaster")
+offset_top = 165.0
+offset_right = 112.0
+offset_bottom = 185.0
+focus_neighbor_bottom = NodePath("../SliderMaster")
 text = "Return to menu"
 
-[node name="Gameplay" type="Tabs" parent="TabContainer"]
+[node name="Gameplay" type="TabBar" parent="TabContainer"]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 4.0
-margin_top = 32.0
-margin_right = -4.0
-margin_bottom = -4.0
+offset_left = 4.0
+offset_top = 32.0
+offset_right = -4.0
+offset_bottom = -4.0
 focus_mode = 2
 
 [node name="GridContainer" type="GridContainer" parent="TabContainer/Gameplay"]
@@ -222,127 +222,127 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -136.0
-margin_top = -181.0
-margin_right = 136.0
-margin_bottom = 181.0
-custom_constants/vseparation = 39
+offset_left = -136.0
+offset_top = -181.0
+offset_right = 136.0
+offset_bottom = 181.0
+theme_override_constants/v_separation = 39
 columns = 2
 
 [node name="Label4" type="Label" parent="TabContainer/Gameplay/GridContainer"]
-margin_top = 3.0
-margin_right = 22.0
-margin_bottom = 17.0
+offset_top = 3.0
+offset_right = 22.0
+offset_bottom = 17.0
 size_flags_horizontal = 0
 text = "Up:"
 
 [node name="Up" type="HBoxContainer" parent="TabContainer/Gameplay/GridContainer"]
-margin_left = 116.0
-margin_right = 196.0
-margin_bottom = 20.0
+offset_left = 116.0
+offset_right = 196.0
+offset_bottom = 20.0
 
 [node name="Label" type="Label" parent="TabContainer/Gameplay/GridContainer/Up"]
-margin_top = 3.0
-margin_right = 18.0
-margin_bottom = 17.0
+offset_top = 3.0
+offset_right = 18.0
+offset_bottom = 17.0
 size_flags_horizontal = 10
 text = "W  "
 
 [node name="ButtonUp" type="Button" parent="TabContainer/Gameplay/GridContainer/Up"]
-margin_left = 22.0
-margin_right = 80.0
-margin_bottom = 20.0
-focus_neighbour_top = NodePath("../../Return")
+offset_left = 22.0
+offset_right = 80.0
+offset_bottom = 20.0
+focus_neighbor_top = NodePath("../../Return")
 text = "Update"
 
 [node name="Label5" type="Label" parent="TabContainer/Gameplay/GridContainer"]
-margin_top = 62.0
-margin_right = 36.0
-margin_bottom = 76.0
+offset_top = 62.0
+offset_right = 36.0
+offset_bottom = 76.0
 size_flags_horizontal = 0
 text = "Down"
 
 [node name="Down" type="HBoxContainer" parent="TabContainer/Gameplay/GridContainer"]
-margin_left = 116.0
-margin_top = 59.0
-margin_right = 196.0
-margin_bottom = 79.0
+offset_left = 116.0
+offset_top = 59.0
+offset_right = 196.0
+offset_bottom = 79.0
 
 [node name="Label" type="Label" parent="TabContainer/Gameplay/GridContainer/Down"]
-margin_left = 3.0
-margin_top = 3.0
-margin_right = 18.0
-margin_bottom = 17.0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 18.0
+offset_bottom = 17.0
 size_flags_horizontal = 10
 text = "S  "
 
 [node name="ButtonDown" type="Button" parent="TabContainer/Gameplay/GridContainer/Down"]
-margin_left = 22.0
-margin_right = 80.0
-margin_bottom = 20.0
+offset_left = 22.0
+offset_right = 80.0
+offset_bottom = 20.0
 text = "Update"
 
 [node name="Label6" type="Label" parent="TabContainer/Gameplay/GridContainer"]
-margin_top = 121.0
-margin_right = 32.0
-margin_bottom = 135.0
+offset_top = 121.0
+offset_right = 32.0
+offset_bottom = 135.0
 size_flags_horizontal = 0
 text = "Right"
 
 [node name="Right" type="HBoxContainer" parent="TabContainer/Gameplay/GridContainer"]
-margin_left = 116.0
-margin_top = 118.0
-margin_right = 196.0
-margin_bottom = 138.0
+offset_left = 116.0
+offset_top = 118.0
+offset_right = 196.0
+offset_bottom = 138.0
 grow_horizontal = 0
 grow_vertical = 0
 
 [node name="Label" type="Label" parent="TabContainer/Gameplay/GridContainer/Right"]
-margin_left = 2.0
-margin_top = 3.0
-margin_right = 18.0
-margin_bottom = 17.0
+offset_left = 2.0
+offset_top = 3.0
+offset_right = 18.0
+offset_bottom = 17.0
 size_flags_horizontal = 10
 text = "D  "
 
 [node name="ButtonRight" type="Button" parent="TabContainer/Gameplay/GridContainer/Right"]
-margin_left = 22.0
-margin_right = 80.0
-margin_bottom = 20.0
+offset_left = 22.0
+offset_right = 80.0
+offset_bottom = 20.0
 text = "Update"
 
 [node name="Label7" type="Label" parent="TabContainer/Gameplay/GridContainer"]
-margin_top = 180.0
-margin_right = 24.0
-margin_bottom = 194.0
+offset_top = 180.0
+offset_right = 24.0
+offset_bottom = 194.0
 size_flags_horizontal = 0
 text = "Left"
 
 [node name="Left" type="HBoxContainer" parent="TabContainer/Gameplay/GridContainer"]
-margin_left = 116.0
-margin_top = 177.0
-margin_right = 196.0
-margin_bottom = 197.0
+offset_left = 116.0
+offset_top = 177.0
+offset_right = 196.0
+offset_bottom = 197.0
 
 [node name="Label" type="Label" parent="TabContainer/Gameplay/GridContainer/Left"]
-margin_left = 3.0
-margin_top = 3.0
-margin_right = 18.0
-margin_bottom = 17.0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 18.0
+offset_bottom = 17.0
 size_flags_horizontal = 10
 text = "A  "
 
 [node name="ButtonLeft" type="Button" parent="TabContainer/Gameplay/GridContainer/Left"]
-margin_left = 22.0
-margin_right = 80.0
-margin_bottom = 20.0
+offset_left = 22.0
+offset_right = 80.0
+offset_bottom = 20.0
 text = "Update"
 
 [node name="Return" type="Button" parent="TabContainer/Gameplay/GridContainer"]
-margin_top = 236.0
-margin_right = 112.0
-margin_bottom = 256.0
-focus_neighbour_bottom = NodePath("../Up/ButtonUp")
+offset_top = 236.0
+offset_right = 112.0
+offset_bottom = 256.0
+focus_neighbor_bottom = NodePath("../Up/ButtonUp")
 text = "Return to menu"
 
 [node name="press_a_key_label" type="Label" parent="."]
@@ -351,9 +351,9 @@ anchor_left = 0.789
 anchor_top = 0.5
 anchor_right = 0.83
 anchor_bottom = 0.5
-margin_left = -72.0
-margin_top = -7.0
-margin_bottom = 7.0
+offset_left = -72.0
+offset_top = -7.0
+offset_bottom = 7.0
 text = "Press a key"
 
 [node name="Control" parent="." instance=ExtResource( 2 )]

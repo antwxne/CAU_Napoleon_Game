@@ -3,12 +3,12 @@ extends Node
 signal fps(value);
 
 func togglefullscreen(value):
-	OS.window_fullscreen = value;
+	get_window().mode = Window.MODE_EXCLUSIVE_FULLSCREEN if value else Window.MODE_WINDOWED
 	Save.gameData.fullscreen_on = value;
 	Save.save_data();
 
 func toggleVsync(value):
-	OS.vsync_enabled = value;
+	DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED if value else DisplayServer.VSYNC_DISABLED)
 	Save.gameData.vsync_on = value;
 	Save.save_data();
 
@@ -18,7 +18,7 @@ func displayFps(value):
 	Save.save_data();
 
 func setMaxFps(value):
-	Engine.target_fps = value if value < 500 else 0;
+	Engine.max_fps = value if value < 500 else 0;
 	Save.gameData.max_fps = value if value < 500 else 0;
 	Save.save_data();
 
@@ -34,17 +34,17 @@ func updateVol(canal, vol):
 	
 func updateShortcut():
 	var upEvent = InputEventKey.new();
-	upEvent.scancode = OS.find_scancode_from_string(Save.gameData.input.Up);
+	upEvent.keycode = OS.find_keycode_from_string(Save.gameData.input.Up);
 	InputMap.action_add_event("Up", upEvent);
 
 	var downEvent = InputEventKey.new();
-	downEvent.scancode = OS.find_scancode_from_string(Save.gameData.input.Down);
+	downEvent.keycode = OS.find_keycode_from_string(Save.gameData.input.Down);
 	InputMap.action_add_event("Down", downEvent);
 
 	var leftEvent = InputEventKey.new();
-	leftEvent.scancode = OS.find_scancode_from_string(Save.gameData.input.Left);
+	leftEvent.keycode = OS.find_keycode_from_string(Save.gameData.input.Left);
 	InputMap.action_add_event("Left", leftEvent);
 
 	var rightEvent = InputEventKey.new();
-	rightEvent.scancode = OS.find_scancode_from_string(Save.gameData.input.Right);
+	rightEvent.keycode = OS.find_keycode_from_string(Save.gameData.input.Right);
 	InputMap.action_add_event("Right", rightEvent);

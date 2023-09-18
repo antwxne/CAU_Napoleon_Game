@@ -1,26 +1,26 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://Font/Roboto-Black.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Font/Roboto-Black.ttf" type="FontFile" id=1]
 [ext_resource path="res://Script/Victory.gd" type="Script" id=2]
 [ext_resource path="res://Hud/fpsDisplay.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Sprite/Line1.png" type="Texture" id=4]
+[ext_resource path="res://Sprite/Line1.png" type="Texture2D" id=4]
 [ext_resource path="res://mixkit-game-level-completed-2059.wav" type="AudioStream" id=5]
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="FontFile" id=1]
 size = 50
 font_data = ExtResource( 1 )
 
 [sub_resource type="Gradient" id=2]
-offsets = PoolRealArray( 0.196774, 0.329032 )
-colors = PoolColorArray( 1, 1, 1, 1, 0.48085, 0.473764, 0.473764, 1 )
+offsets = PackedFloat32Array( 0.196774, 0.329032 )
+colors = PackedColorArray( 1, 1, 1, 1, 0.48085, 0.473764, 0.473764, 1 )
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -3.0
-margin_top = -92.0
-margin_right = -3.0
-margin_bottom = -92.0
+offset_left = -3.0
+offset_top = -92.0
+offset_right = -3.0
+offset_bottom = -92.0
 script = ExtResource( 2 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -28,10 +28,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -508.0
-margin_top = -209.0
-margin_right = 516.0
-margin_bottom = 391.0
+offset_left = -508.0
+offset_top = -209.0
+offset_right = 516.0
+offset_bottom = 391.0
 color = Color( 0.172549, 0.0352941, 0.0352941, 1 )
 
 [node name="Label" type="Label" parent="."]
@@ -39,11 +39,11 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -81.5
-margin_top = -50.0
-margin_right = 81.5
-margin_bottom = 30.0
-custom_fonts/font = SubResource( 1 )
+offset_left = -81.5
+offset_top = -50.0
+offset_right = 81.5
+offset_bottom = 30.0
+theme_override_fonts/font = SubResource( 1 )
 text = "Victory"
 
 [node name="Button" type="Button" parent="."]
@@ -51,11 +51,11 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -100.0
-margin_top = 30.0
-margin_right = 100.0
-margin_bottom = 70.0
-focus_neighbour_top = NodePath("../Button2")
+offset_left = -100.0
+offset_top = 30.0
+offset_right = 100.0
+offset_bottom = 70.0
+focus_neighbor_top = NodePath("../Button2")
 text = "Replay"
 
 [node name="Button2" type="Button" parent="."]
@@ -63,18 +63,18 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -100.0
-margin_top = 100.0
-margin_right = 100.0
-margin_bottom = 140.0
-focus_neighbour_bottom = NodePath("../Button")
+offset_left = -100.0
+offset_top = 100.0
+offset_right = 100.0
+offset_bottom = 140.0
+focus_neighbor_bottom = NodePath("../Button")
 text = "Main menu"
 
 [node name="Control" parent="." instance=ExtResource( 3 )]
-margin_left = 3.0
-margin_top = 89.0
-margin_right = 3.0
-margin_bottom = 89.0
+offset_left = 3.0
+offset_top = 89.0
+offset_right = 3.0
+offset_bottom = 89.0
 
 [node name="Particles2D2" type="CPUParticles2D" parent="."]
 position = Vector2( 843, 366 )
@@ -90,7 +90,7 @@ color_ramp = SubResource( 2 )
 hue_variation = 1.0
 hue_variation_random = 1.0
 
-[node name="Particles2D" type="CPUParticles2D" parent="."]
+[node name="GPUParticles2D" type="CPUParticles2D" parent="."]
 position = Vector2( 224, 535 )
 amount = 100
 texture = ExtResource( 4 )

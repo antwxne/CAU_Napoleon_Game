@@ -8,4 +8,4 @@ func _ready():
 func _input(value):
 	print(value);
 	emit_signal("updateKeyUp", value);
-	get_tree().change_scene("res://SettingsMenu.tscn");
+	get_tree().change_scene_to_file("res://SettingsMenu.tscn");

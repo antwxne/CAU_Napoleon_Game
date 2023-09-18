@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/mixkit-medieval-show-fanfare-announcement-226.wav-7d8c44727b07985454e66f8f135f1bcb.sample"
+type="AudioStreamWAV"
+uid="uid://xw2h6cntjmte"
+path="res://.godot/imported/mixkit-medieval-show-fanfare-announcement-226.wav-7d8c44727b07985454e66f8f135f1bcb.sample"
 
 [deps]
 
 source_file="res://mixkit-medieval-show-fanfare-announcement-226.wav"
-dest_files=[ "res://.import/mixkit-medieval-show-fanfare-announcement-226.wav-7d8c44727b07985454e66f8f135f1bcb.sample" ]
+dest_files=["res://.godot/imported/mixkit-medieval-show-fanfare-announcement-226.wav-7d8c44727b07985454e66f8f135f1bcb.sample"]
 
 [params]
 

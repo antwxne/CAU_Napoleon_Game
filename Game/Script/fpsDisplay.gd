@@ -1,7 +1,7 @@
 extends Label
 
 func _ready():
-	var connect = GlobalSettings.connect("fps", self, "_on_fps");
+	GlobalSettings.connect("fps", Callable(self, "_on_fps"));
 	visible = Save.gameData.display_fps;
 	return connect;
 

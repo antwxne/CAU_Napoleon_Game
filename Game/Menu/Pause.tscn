@@ -1,16 +1,16 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Font/Roboto-Black.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Font/Roboto-Black.ttf" type="FontFile" id=2]
 [ext_resource path="res://Hud/fpsDisplay.tscn" type="PackedScene" id=3]
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="FontFile" id=1]
 size = 25
 font_data = ExtResource( 2 )
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-rect_pivot_offset = Vector2( -246, -71 )
+pivot_offset = Vector2( -246, -71 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
@@ -20,20 +20,20 @@ color = Color( 0.172549, 0.0352941, 0.0352941, 1 )
 [node name="Control" parent="." instance=ExtResource( 3 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 501.0
-margin_bottom = 20.0
+offset_right = 501.0
+offset_bottom = 20.0
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="."]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -226.0
-margin_right = 226.0
-margin_bottom = 201.0
+offset_left = -226.0
+offset_right = 226.0
+offset_bottom = 201.0
 
 [node name="Title" type="Label" parent="VBoxContainer2"]
-margin_right = 452.0
-margin_bottom = 201.0
-custom_fonts/font = SubResource( 1 )
+offset_right = 452.0
+offset_bottom = 201.0
+theme_override_fonts/font = SubResource( 1 )
 text = "
 
 Pause
@@ -48,37 +48,37 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -250.0
-margin_top = -56.0
-margin_right = 251.0
-margin_bottom = 114.0
-custom_constants/separation = 29
+offset_left = -250.0
+offset_top = -56.0
+offset_right = 251.0
+offset_bottom = 114.0
+theme_override_constants/separation = 29
 alignment = 1
 
 [node name="Play" type="Button" parent="VBoxContainer"]
-margin_top = 1.0
-margin_right = 501.0
-margin_bottom = 21.0
-focus_neighbour_top = NodePath("../Left")
+offset_top = 1.0
+offset_right = 501.0
+offset_bottom = 21.0
+focus_neighbor_top = NodePath("../Left")
 text = "Restart"
 
 [node name="Settings" type="Button" parent="VBoxContainer"]
-margin_top = 50.0
-margin_right = 501.0
-margin_bottom = 70.0
+offset_top = 50.0
+offset_right = 501.0
+offset_bottom = 70.0
 text = "Settings"
 
 [node name="MainMenu" type="Button" parent="VBoxContainer"]
-margin_top = 99.0
-margin_right = 501.0
-margin_bottom = 119.0
+offset_top = 99.0
+offset_right = 501.0
+offset_bottom = 119.0
 text = "Main Menu"
 
 [node name="Left" type="Button" parent="VBoxContainer"]
-margin_top = 148.0
-margin_right = 501.0
-margin_bottom = 168.0
-focus_neighbour_bottom = NodePath("../Play")
+offset_top = 148.0
+offset_right = 501.0
+offset_bottom = 168.0
+focus_neighbor_bottom = NodePath("../Play")
 text = "Exit"
 
 [connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_Play_pressed"]

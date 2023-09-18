@@ -1,21 +1,21 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://Font/Roboto-Black.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Font/Roboto-Black.ttf" type="FontFile" id=1]
 [ext_resource path="res://Script/Loose.gd" type="Script" id=2]
 [ext_resource path="res://Hud/fpsDisplay.tscn" type="PackedScene" id=3]
 [ext_resource path="res://mixkit-low-explosion-indoors-2187.wav" type="AudioStream" id=4]
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="FontFile" id=1]
 size = 50
 font_data = ExtResource( 1 )
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -3.0
-margin_top = -92.0
-margin_right = -3.0
-margin_bottom = -92.0
+offset_left = -3.0
+offset_top = -92.0
+offset_right = -3.0
+offset_bottom = -92.0
 script = ExtResource( 2 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -23,10 +23,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -508.0
-margin_top = -209.0
-margin_right = 516.0
-margin_bottom = 391.0
+offset_left = -508.0
+offset_top = -209.0
+offset_right = 516.0
+offset_bottom = 391.0
 color = Color( 0.172549, 0.0352941, 0.0352941, 1 )
 
 [node name="Label" type="Label" parent="."]
@@ -34,11 +34,11 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -70.0
-margin_top = -50.0
-margin_right = 79.0
-margin_bottom = 30.0
-custom_fonts/font = SubResource( 1 )
+offset_left = -70.0
+offset_top = -50.0
+offset_right = 79.0
+offset_bottom = 30.0
+theme_override_fonts/font = SubResource( 1 )
 text = "Loose"
 
 [node name="Button" type="Button" parent="."]
@@ -46,11 +46,11 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -100.0
-margin_top = 30.0
-margin_right = 100.0
-margin_bottom = 70.0
-focus_neighbour_top = NodePath("../Button2")
+offset_left = -100.0
+offset_top = 30.0
+offset_right = 100.0
+offset_bottom = 70.0
+focus_neighbor_top = NodePath("../Button2")
 text = "Replay"
 
 [node name="Button2" type="Button" parent="."]
@@ -58,18 +58,18 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -100.0
-margin_top = 100.0
-margin_right = 100.0
-margin_bottom = 140.0
-focus_neighbour_bottom = NodePath("../Button")
+offset_left = -100.0
+offset_top = 100.0
+offset_right = 100.0
+offset_bottom = 140.0
+focus_neighbor_bottom = NodePath("../Button")
 text = "Main menu"
 
 [node name="Control" parent="." instance=ExtResource( 3 )]
-margin_left = 2.0
-margin_top = 93.0
-margin_right = 2.0
-margin_bottom = 93.0
+offset_left = 2.0
+offset_top = 93.0
+offset_right = 2.0
+offset_bottom = 93.0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
